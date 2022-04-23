@@ -1,0 +1,16 @@
+.mg {
+    margin-top: 6rem;
+    position: relative;
+}
+  
+.main-video-container {
+    margin-left: 16rem;
+}
+  
+.videos-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    place-content: center center;
+}
+  
