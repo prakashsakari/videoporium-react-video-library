@@ -1,0 +1,11 @@
+.hero-drawer {
+    position: fixed;
+    left: 0;
+    padding-top: 0;
+}
+  
+.list-item-drawer:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
+  

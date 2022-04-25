@@ -1,0 +1,18 @@
+.chip {
+    border-radius: 2rem;
+    padding: 0.3rem 0.875rem;
+    margin-bottom: 0.5rem;
+    max-width: 12.5rem;
+    border: 1px solid;
+}
+  
+.chip:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    cursor: pointer;
+}
+  
+.category {
+    padding: 0.3rem 0 1rem 0;
+}
+  
