@@ -46,7 +46,7 @@ export const Home = () => {
     
                 <div className="videos-container">
                     {videos.map((video) => (
-                    <VideoCard video={video} key={video.id} />
+                    <VideoCard video={video} key={video._id} />
                     ))}
                 </div>
                 </main>

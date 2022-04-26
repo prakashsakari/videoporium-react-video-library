@@ -1,0 +1,58 @@
+.single-video-container {
+    padding: 8px;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    width: 76vw;
+    margin-bottom: 2rem;
+  }
+  
+  .video-frame-container {
+    width: 100%;
+    height: 25rem;
+  }
+  
+  .video-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+  
+  .about-creator {
+    margin-bottom: 0.75rem;
+  }
+  
+  .col-flex-util {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .gap-12px {
+    gap: 0.75rem;
+  }
+  
+  .gap-8px {
+    gap: 0.5rem;
+  }
+  
+  .feature-btn {
+    font-size: 0.875rem;
+    padding: 8px 0;
+    cursor: pointer;
+  }
+  
+  .feature-btn:hover {
+    color: var(--primary-color);
+  }
+  
+  .views-count {
+    margin-left: auto;
+    font-size: 0.875rem;
+  }
+  
+  .description {
+    margin-top: 12px;
+  }
+  

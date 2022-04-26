@@ -1,0 +1,1 @@
+export {getVideo} from "./get-video";
