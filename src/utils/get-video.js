@@ -1,0 +1,1 @@
+export const getVideo = (videos, videoId) => videos.find(video => video._id ===  videoId);
