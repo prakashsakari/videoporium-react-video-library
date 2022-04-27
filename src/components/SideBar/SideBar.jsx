@@ -1,31 +1,36 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./SideBar.css";
 
 export const SideBar = () => {
+  const navigate = useNavigate();
+
   return (
-    <aside class="hero-drawer" id="Drawer">
-      <div class="drawer-content">
-        <nav class="drawer-content-list">
-          <Link to="/" class="list-item-drawer">
-            <span class="material-icons-outlined">explore</span>
-            <span class="item-title">Home</span>
-          </Link>
-          <Link to="/liked" class="list-item-drawer">
-            <span class="material-icons-outlined">thumb_up_off_alt</span>
-            <span class="item-title">Liked</span>
-          </Link>
-          <Link to="/playlist" class="list-item-drawer">
-            <span class="material-icons-outlined">playlist_add_circle</span>
-            <span class="item-title">Playlist</span>
-          </Link>
-          <Link to="/watchlater" class="list-item-drawer">
-            <span class="material-icons-outlined">browse_gallery</span>
-            <span class="item-title">Watch Later</span>
-          </Link>
-          <Link to="/history" class="list-item-drawer">
-            <span class="material-icons-outlined">history_toggle_off</span>
-            <span class="item-title">History</span>
-          </Link>
+    <aside className="hero-drawer" id="Drawer">
+      <div className="drawer-content">
+        <nav className="drawer-content-list">
+          <div onClick={() => navigate("/")} className="list-item-drawer pointer">
+            <span className="material-icons-outlined">explore</span>
+            <span className="item-title">Home</span>
+          </div>
+          <div
+            onClick={() => navigate("/liked")}
+            className="list-item-drawer pointer"
+          >
+            <span className="material-icons-outlined">thumb_up_off_alt</span>
+            <span className="item-title">Liked</span>
+          </div>
+          <div onClick={() => navigate("/playlist")} className="list-item-drawer pointer">
+            <span className="material-icons-outlined">playlist_add_circle</span>
+            <span className="item-title">Playlist</span>
+          </div>
+          <div onClick={() => navigate("/watchlater")} className="list-item-drawer pointer">
+            <span className="material-icons-outlined">browse_gallery</span>
+            <span className="item-title">Watch Later</span>
+          </div>
+          <div onClick={() => navigate("/history")} className="list-item-drawer pointer">
+            <span className="material-icons-outlined">history_toggle_off</span>
+            <span className="item-title">History</span>
+          </div>
         </nav>
       </div>
     </aside>
