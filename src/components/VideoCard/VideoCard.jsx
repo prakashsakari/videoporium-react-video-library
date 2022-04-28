@@ -4,6 +4,7 @@ import "./VideoCard.css";
 export const VideoCard = ({ video }) => {
   const { _id, image, length, icon, title, channelName, views } = video;
   const navigate = useNavigate();
+  
   return (
     <div class="video-card col-flex-util gap-12px" onClick={() => navigate(`/video/${_id}`)}>
         <div class="thumbnail-container">

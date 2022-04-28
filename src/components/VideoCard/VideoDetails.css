@@ -5,6 +5,10 @@
     width: 76vw;
     margin-bottom: 2rem;
   }
+
+.single-video-container:hover {
+  cursor: pointer;
+}
   
   .video-frame-container {
     width: 100%;

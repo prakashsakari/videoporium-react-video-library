@@ -1,9 +1,12 @@
+import {useNavigate} from "react-router-dom";
+
 export const LikedVideo = ({ video }) => {
-    const { image, length, icon, title, channelName, views } = video;
+    const { image, length, icon, title, channelName, views, _id } = video;
+    const navigate = useNavigate();
   
     return (
-      <div className="single-video-container d-flex gap-12px relative">
-        <div class="thumbnail-container liked">
+      <div className="single-video-container d-flex gap-12px relative" onClick={() => navigate(`/video/${_id}`)}>
+        <div class="thumbnail-container liked" >
           <img class="thumbnail" src={image} alt="thumbnail" />
           <span class="video-length absolute right-0">{length}</span>
         </div>
