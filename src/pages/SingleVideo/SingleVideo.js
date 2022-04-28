@@ -29,8 +29,8 @@ export const SingleVideo = () => {
         <Navbar />
         <div class="d-flex gap mg">
             <SideBar />
-            <main class="main-video-container scrollable-element">
-            {video && !error ? (<VideoDetails  {...video}/>) : (<h2>...Loading</h2>)}
+            <main className="main-video-container scrollable-element">
+            {video && !error ? (<VideoDetails  singleVideo={video} {...video} key={video._id}/>) : (<h2>...Loading</h2>)}
             </main>
         </div>
         </>

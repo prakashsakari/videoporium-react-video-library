@@ -1,6 +1,8 @@
+import { useLiked } from "../../context/";
 import "./VideoDetails.css"
 
-export const VideoDetails = ({_id, title, channelName, views, description}) => {
+export const VideoDetails = ({_id, title, channelName, views, description, singleVideo}) => {
+    const { liked: { likedVideos }, likedDispatch} = useLiked();
 
     return (
         <div class="single-video-container">
@@ -17,8 +19,19 @@ export const VideoDetails = ({_id, title, channelName, views, description}) => {
             ></iframe>
         </div>
         <div class="featured-options d-flex align-center gap">
-            <button class="button d-flex align-center gap-8px feature-btn">
-            <span class="material-icons-outlined">thumb_up_off_alt</span>
+            <button class="button d-flex align-center gap-8px feature-btn" onClick={() =>
+            likedDispatch({
+              type: "LIKED",
+              payload: singleVideo
+            })
+          }>
+            <span className={ likedVideos.some((video) => video._id === singleVideo._id)
+                ? "material-icons"
+                : "material-icons-outlined"
+            }
+          >
+            thumb_up_alt
+          </span>
             <span class="item-title">Like</span>
             </button>
             <button class="button d-flex align-center gap-8px feature-btn">
