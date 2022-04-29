@@ -4,7 +4,7 @@ import { likedReducer } from "../reducer";
 const LikedContext = createContext();
 
 const LikedProvider = ({ children }) => {
-  const [liked, likedDispatch] = useReducer(likedReducer, { likedVideos: [] });
+  const [liked, likedDispatch] = useReducer(likedReducer, { likedVideos: [], watchLater: [], });
   return (
     <LikedContext.Provider value={{ liked, likedDispatch }}>
       {children}
