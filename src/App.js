@@ -1,5 +1,5 @@
 import "./App.css";
-import { Home, SingleVideo, Liked, WatchLater } from "./pages";
+import { Home, SingleVideo, Liked, WatchLater, History } from "./pages";
 import { Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -9,6 +9,7 @@ export default function App() {
       <Route path="/video/:videoId" element={<SingleVideo />} />
       <Route path="/liked" element={<Liked />} />
       <Route path="/watchlater" element={<WatchLater />} />
+      <Route path="/history" element={<History />} />
     </Routes>
   );
 }

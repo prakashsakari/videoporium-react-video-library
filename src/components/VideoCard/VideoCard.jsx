@@ -1,12 +1,22 @@
 import {useNavigate} from "react-router-dom";
+import { useLiked } from "../../context";
 import "./VideoCard.css";
 
 export const VideoCard = ({ video }) => {
   const { _id, image, length, icon, title, channelName, views } = video;
   const navigate = useNavigate();
+  const { likedDispatch } = useLiked();
   
   return (
-    <div class="video-card col-flex-util gap-12px" onClick={() => navigate(`/video/${_id}`)}>
+    <div class="video-card col-flex-util gap-12px" 
+          onClick={() => {
+            navigate(`/video/${_id}`)
+            likedDispatch({
+              type: "HISTORY",
+              payload: video
+            });
+
+            }}>
         <div class="thumbnail-container">
           <img class="thumbnail" src={image} alt="thumbnail" />
           <span class="video-length absolute right-0">{length}</span>

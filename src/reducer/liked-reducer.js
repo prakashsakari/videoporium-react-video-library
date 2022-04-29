@@ -17,6 +17,14 @@ export const likedReducer = (liked, { type, payload }) => {
                 ? [...liked.watchLater, payload]
                 : liked.watchLater
             };
+
+        case "HISTORY":
+            return {
+                ...liked,
+                history: !liked.history.some((video) => video._id === payload._id)
+                ? [...liked.history, payload]
+                : liked.history
+            };
     
         default:
             return liked;
