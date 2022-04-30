@@ -1,11 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { Navbar, LikedVideo, SideBar } from "../../components";
-import { useLiked } from "../../context";
+import { usePlaylist } from "../../context";
 
 export const Liked = () => {
-  const {
-    liked: { likedVideos }
-  } = useLiked();
+  const { likedVideos } = usePlaylist();
 
   const navigate = useNavigate();
   return (
@@ -18,7 +16,7 @@ export const Liked = () => {
             likedVideos.map((video) => <LikedVideo video={video} key={video._id}/>)
           ) : (
             <div>
-              <h3 className="mg">You have not liked any video yet --><button className="button btn-link-primary cursor" onClick={() => navigate("/")}>click to explore videos.</button></h3>
+              <h3 className="mg">You have not liked any video yet --<button className="button btn-link-primary cursor" onClick={() => navigate("/")}>click to explore videos.</button></h3>
               
             </div>
           )}

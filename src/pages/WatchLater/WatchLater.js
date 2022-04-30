@@ -1,8 +1,8 @@
 import { Navbar, SideBar, LikedVideo } from "../../components";
-import { useLiked } from "../../context";
+import { usePlaylist } from "../../context";
 
 export const WatchLater = () => {
-  const { liked: { watchLater }} = useLiked();
+  const { watchLater } = usePlaylist();
 
   return (
         <>

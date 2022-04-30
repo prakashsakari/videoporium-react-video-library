@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
-import {LikedProvider} from "./context"
+import {PlaylistProvider} from "./context"
 
 // Call make Server
 makeServer();
@@ -12,9 +12,9 @@ makeServer();
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <LikedProvider>
+      <PlaylistProvider>
         <App />
-      </LikedProvider>
+      </PlaylistProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

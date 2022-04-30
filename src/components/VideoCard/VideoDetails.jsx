@@ -1,8 +1,8 @@
-import { useLiked } from "../../context/";
+import { usePlaylist } from "../../context/";
 import "./VideoDetails.css"
 
 export const VideoDetails = ({_id, title, channelName, views, description, singleVideo}) => {
-    const { liked: { likedVideos, watchLater }, likedDispatch} = useLiked();
+    const { likedVideos, watchLater , playlistDispatch } = usePlaylist();
 
     return (
         <div class="single-video-container">
@@ -20,7 +20,7 @@ export const VideoDetails = ({_id, title, channelName, views, description, singl
             </div>
             <div class="featured-options d-flex align-center gap">
                 <button class="button d-flex align-center gap-8px feature-btn" onClick={() =>
-                        likedDispatch({
+                        playlistDispatch({
                         type: "LIKED",
                         payload: singleVideo
                         })}>
@@ -33,7 +33,7 @@ export const VideoDetails = ({_id, title, channelName, views, description, singl
                         <span class="item-title">Like</span>
                 </button>
                 <button class="button d-flex align-center gap-8px feature-btn" onClick={() =>
-                        likedDispatch({
+                        playlistDispatch({
                         type: "WATCH_LATER",
                         payload: singleVideo
                         })}>

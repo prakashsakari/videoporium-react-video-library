@@ -1,4 +1,4 @@
-export const likedReducer = (liked, { type, payload }) => {
+export const playlistReducer = (liked, { type, payload }) => {
     switch (type) {
         case "LIKED":
             return {
@@ -16,6 +16,14 @@ export const likedReducer = (liked, { type, payload }) => {
                 watchLater: !liked.watchLater.some((video) => video._id === payload._id)
                 ? [...liked.watchLater, payload]
                 : liked.watchLater
+            };
+
+        case "HISTORY":
+            return {
+                ...liked,
+                history: !liked.history.some((video) => video._id === payload._id)
+                ? [...liked.history, payload]
+                : liked.history
             };
     
         default:

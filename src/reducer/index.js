@@ -1,1 +1,1 @@
-export { likedReducer } from "./liked-reducer";
+export { playlistReducer } from "./playlist-reducer";
