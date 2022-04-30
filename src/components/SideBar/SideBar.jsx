@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
+import { usePlaylist } from "../../context";
 import "./SideBar.css";
 
 export const SideBar = () => {
   const navigate = useNavigate();
+  const { playlistDispatch } = usePlaylist();
 
   return (
     <aside className="hero-drawer" id="Drawer">
@@ -13,7 +15,13 @@ export const SideBar = () => {
             <span className="item-title">Home</span>
           </div>
           <div
-            onClick={() => navigate("/liked")}
+            onClick={() => {
+              navigate("/liked")
+              playlistDispatch({
+                type: "SET_OPTION",
+                payload: "liked-video"
+              });
+            }}
             className="list-item-drawer pointer"
           >
             <span className="material-icons-outlined">thumb_up_off_alt</span>

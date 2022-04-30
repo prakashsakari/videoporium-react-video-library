@@ -25,6 +25,21 @@ export const playlistReducer = (liked, { type, payload }) => {
                 ? [...liked.history, payload]
                 : liked.history
             };
+
+        case "SET_OPTION":
+            return {
+                ...liked,
+                option: payload
+            };
+        
+        case "DELETE":
+            return {
+                ...liked,
+                likedVideos:
+                liked.option === "liked-video"
+                    ? liked.likedVideos.filter((video) => video._id !== payload._id)
+                    : liked.likedVideos,
+            };
     
         default:
             return liked;
