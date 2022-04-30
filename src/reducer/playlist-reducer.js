@@ -1,4 +1,4 @@
-export const likedReducer = (liked, { type, payload }) => {
+export const playlistReducer = (liked, { type, payload }) => {
     switch (type) {
         case "LIKED":
             return {

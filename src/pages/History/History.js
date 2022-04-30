@@ -1,10 +1,8 @@
 import { Navbar, SideBar, LikedVideo } from "../../components";
-import { useLiked } from "../../context";
+import { usePlaylist } from "../../context";
 
 export const History = () => {
-  const {
-    liked: { history }
-  } = useLiked();
+  const { history } = usePlaylist();
 
   return (
     <>
@@ -12,8 +10,8 @@ export const History = () => {
       <div class="d-flex gap mg">
         <SideBar />
         <main class="main-video-container scrollable-element">
-          {history && history.length > 0 ? (
-            history.map((video) => <LikedVideo video={video} />)
+          {history.length > 0 ? (
+            history?.map((video) => <LikedVideo video={video} />)
           ) : (
             <h2>Nothing to display</h2>
           )}
