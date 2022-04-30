@@ -31,7 +31,13 @@ export const SideBar = () => {
             <span className="material-icons-outlined">playlist_add_circle</span>
             <span className="item-title">Playlist</span>
           </div>
-          <div onClick={() => navigate("/watchlater")} className="list-item-drawer pointer">
+          <div onClick={() => {
+              navigate("/watchlater")
+              playlistDispatch({
+                type: "SET_OPTION",
+                payload: "watch-later"
+              });
+            }} className="list-item-drawer pointer">
             <span className="material-icons-outlined">browse_gallery</span>
             <span className="item-title">Watch Later</span>
           </div>
