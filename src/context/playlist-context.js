@@ -4,9 +4,9 @@ import { playlistReducer } from "../reducer";
 const PlaylistContext = createContext();
 
 const PlaylistProvider = ({ children }) => {
-  const [{likedVideos, watchLater, history}, playlistDispatch] = useReducer(playlistReducer, { likedVideos: [], watchLater: [], history: [] });
+  const [{likedVideos, watchLater, history, option}, playlistDispatch] = useReducer(playlistReducer, { likedVideos: [], watchLater: [], history: [], option: "" });
   return (
-    <PlaylistContext.Provider value={{ likedVideos, watchLater, history, playlistDispatch }}>
+    <PlaylistContext.Provider value={{ likedVideos, watchLater, history, option, playlistDispatch }}>
       {children}
     </PlaylistContext.Provider>
   );

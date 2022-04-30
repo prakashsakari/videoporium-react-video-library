@@ -1,11 +1,14 @@
 import {useNavigate} from "react-router-dom";
+import { usePlaylist } from "../../context";
 
 export const LikedVideo = ({ video }) => {
     const { image, length, icon, title, channelName, views, _id } = video;
+    const { playlistDispatch } = usePlaylist();
     const navigate = useNavigate();
   
     return (
-      <div className="single-video-container d-flex gap-12px relative" onClick={() => navigate(`/video/${_id}`)}>
+      <div className="single-video-container relative">
+        <div className="d-flex gap-12px" onClick={() => navigate(`/video/${_id}`)}>
         <div class="thumbnail-container liked" >
           <img class="thumbnail" src={image} alt="thumbnail" />
           <span class="video-length absolute right-0">{length}</span>
@@ -23,8 +26,14 @@ export const LikedVideo = ({ video }) => {
             </h4>
           </div>
         </div>
-        <button className="button absolute top-0 right-0 del-btn">
-          <span class="material-icons">delete_outline</span>
+        </div>
+        <button className="button absolute top-0 right-0 del-btn" >
+          <span class="material-icons cursor" onClick={() =>
+            playlistDispatch({
+              type: "DELETE",
+              payload: video
+            })
+          }>delete_outline</span>
         </button>
       </div>
     );
