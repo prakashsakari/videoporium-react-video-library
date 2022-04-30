@@ -35,7 +35,13 @@ export const SideBar = () => {
             <span className="material-icons-outlined">browse_gallery</span>
             <span className="item-title">Watch Later</span>
           </div>
-          <div onClick={() => navigate("/history")} className="list-item-drawer pointer">
+          <div onClick={() => {
+              navigate("/history")
+              playlistDispatch({
+                type: "SET_OPTION",
+                payload: "history"
+              });
+            }} className="list-item-drawer pointer">
             <span className="material-icons-outlined">history_toggle_off</span>
             <span className="item-title">History</span>
           </div>
