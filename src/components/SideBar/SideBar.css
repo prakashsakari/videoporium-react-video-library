@@ -3,9 +3,21 @@
     left: 0;
     padding-top: 0;
 }
+
+.list-item-drawer {
+    margin-bottom: 0.25rem;
+}
   
 .list-item-drawer:hover {
     background-color: var(--primary-color);
     color: var(--background-color);
 }
+
+.selected {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+}
   
+.br {
+    border-radius: 0 2rem 2rem 0;
+}
