@@ -5,12 +5,14 @@ export const Category = ({ category }) => {
   const { categoryName, videoCategory } = category;
   const { categoryDispatch, selectedCategory } = useCategory();
 
-  return <button className={`${
-    videoCategory === selectedCategory ? "selected" : ""
-  } button chip`} onClick={() =>
+  const handleClick = () => {
     categoryDispatch({
       type: "CATEGORY",
       payload: videoCategory
     })
-  }>{categoryName}</button>;
+  }
+
+  return <button className={`${
+    videoCategory === selectedCategory ? "selected" : ""
+  } button chip`} onClick={handleClick}>{categoryName}</button>;
 };
