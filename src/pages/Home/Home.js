@@ -1,6 +1,8 @@
-import { Navbar, Footer, SideBar, VideoCard, Category } from "../../components";
 import axios from "axios";
 import {useState, useEffect} from "react";
+import { useCategory } from "../../context";
+import { Navbar, Footer, SideBar, VideoCard, Category } from "../../components";
+import { getWearables, getPhones, getLaptops, getTrending } from "../../utils";
 import "./Home.css";
 
 export const Home = () => {
@@ -8,6 +10,7 @@ export const Home = () => {
     const [categories, setCategories] = useState([]);
     const [videos, setVideos] = useState([]);
     const [error, setError] = useState();
+    const { selectedCategory } = useCategory();
 
     useEffect(() => {
         (async () => {
@@ -31,6 +34,18 @@ export const Home = () => {
         })()
     }, [])
 
+    const filteredVideos =
+    selectedCategory === "phone"
+      ? getPhones(videos, selectedCategory)
+      : selectedCategory === "laptop"
+      ? getLaptops(videos, selectedCategory)
+      : selectedCategory === "wearables"
+      ? getWearables(videos, selectedCategory)
+      : selectedCategory === "trending"
+      ? getTrending(videos)
+      : videos;
+
+
     return (
         <>
         <Navbar />
@@ -45,7 +60,7 @@ export const Home = () => {
                 </div>
     
                 <div className="videos-container">
-                    {videos.map((video) => (
+                    {filteredVideos && filteredVideos.map((video) => (
                     <VideoCard video={video} key={video._id} />
                     ))}
                 </div>

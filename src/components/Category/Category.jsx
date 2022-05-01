@@ -1,7 +1,18 @@
 import "./Category.css";
+import { useCategory } from "../../context";
 
 export const Category = ({ category }) => {
-  const { categoryName } = category;
+  const { categoryName, videoCategory } = category;
+  const { categoryDispatch, selectedCategory } = useCategory();
 
-  return <button class="button chip">{categoryName}</button>;
+  const handleClick = () => {
+    categoryDispatch({
+      type: "CATEGORY",
+      payload: videoCategory
+    })
+  }
+
+  return <button className={`${
+    videoCategory === selectedCategory ? "selected" : ""
+  } button chip`} onClick={handleClick}>{categoryName}</button>;
 };
