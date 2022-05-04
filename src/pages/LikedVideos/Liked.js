@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Navbar, LikedVideo, SideBar } from "../../components";
 import { usePlaylist } from "../../context";
+import "../Playlist.css"
 
 export const Liked = () => {
   const { likedVideos } = usePlaylist();
@@ -12,12 +13,20 @@ export const Liked = () => {
       <div class="d-flex gap mg">
         <SideBar />
         <main className="main-video-container scrollable-element">
+          <h2 className="heading-2 page-title title-width">Liked Videos</h2>
           {likedVideos && likedVideos.length > 0 ? (
             likedVideos.map((video) => <LikedVideo video={video} key={video._id}/>)
           ) : (
-            <div>
-              <h3 className="mg">You have not liked any video yet --<button className="button btn-link-primary cursor" onClick={() => navigate("/")}>click to explore videos.</button></h3>
-              
+            <div className="notify-message">
+              <h3 className="heading-3">
+                You have not liked any video yet.{" "}
+                <span
+                  className="back-home cursor"
+                  onClick={() => navigate("/")}
+                >
+                  Explore all videos
+                </span>
+              </h3>
             </div>
           )}
         </main>
