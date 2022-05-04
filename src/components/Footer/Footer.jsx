@@ -1,3 +1,5 @@
+import "./Footer.css";
+
 export const Footer = () => {
     return (
       <footer class="footer d-flex direction-column align-center">
