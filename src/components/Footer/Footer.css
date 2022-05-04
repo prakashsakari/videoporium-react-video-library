@@ -1,0 +1,16 @@
+.footer {
+    padding-top: 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--text-color-secondary);
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translate(-50%, 0);
+}
+  
+.padding-all-16 {
+    padding: 0;
+    padding-top: 8px;
+}
+  
