@@ -37,6 +37,12 @@ export const playlistReducer = (liked, { type, payload }) => {
                 ? [...liked.history, payload]
                 : liked.history
             };
+        
+        case "CLEAR_HISTORY":
+            return {
+                ...liked,
+                history: []
+            };
 
         case "SET_OPTION":
             return {
