@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png"
 import "./Navbar.css";
-
+import { useCategory } from "../../context";
 export const Navbar = () => {
+
+  const {categoryDispatch} = useCategory();
+
   return (
     <header class="heading d-flex align-center fixed top-0 left-0">
       <div class="heading-title-icon d-flex  align-center">
@@ -19,6 +22,11 @@ export const Navbar = () => {
       </div>
       <div className="search-box-container relative">
         <input
+        onChange={(e) =>
+          categoryDispatch({
+            type: "SEARCH",
+            payload: e.target.value
+          })}
           className="search-box padding-all-8 border-radius-4"
           type="text"
           placeholder="Search"

@@ -4,11 +4,12 @@ import { categoryReducer } from "../reducer";
 const CategoryContext = createContext();
 
 const CategoryProvider = ({ children }) => {
-  const [{ selectedCategory }, categoryDispatch] = useReducer(categoryReducer, {
-    selectedCategory: "all"
+  const [{ selectedCategory, tag }, categoryDispatch] = useReducer(categoryReducer, {
+    selectedCategory: "all",
+    tag: ""
   });
   return (
-    <CategoryContext.Provider value={{ selectedCategory, categoryDispatch }}>
+    <CategoryContext.Provider value={{ selectedCategory, tag, categoryDispatch }}>
       {children}
     </CategoryContext.Provider>
   );

@@ -38,4 +38,7 @@
 .navigation {
     margin-left: 0;
 }
-  
+
+.search-box:focus{
+    outline: 1px solid var(--accent-color);
+}

@@ -5,6 +5,12 @@ export const categoryReducer = (state, { type, payload }) => {
           ...state,
           selectedCategory: payload
         };
+      
+      case "SEARCH":
+        return {
+          ...state,
+          tag: payload
+        };
   
       default:
         return state;
