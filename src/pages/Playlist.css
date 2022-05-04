@@ -1,0 +1,21 @@
+.page-title {
+    margin-bottom: 2rem;
+}
+  
+.clear-all {
+    margin-left: auto;
+}
+
+.title-width {
+    width: 78vw;
+}
+
+.back-home {
+    text-decoration: underline;
+    color: var(--primary-color);
+}
+
+.notify-message {
+    text-align: center;
+}
+  
