@@ -37,6 +37,7 @@
   
 .about-video {
     align-items: flex-start;
+    width: 24vw;
 }
   
 .channel-icon {
@@ -57,4 +58,8 @@
     line-height: 8px;
     font-weight: normal;
 }
-  
+
+.option {
+    bottom: 5rem;
+    right: 0.3rem;
+}
