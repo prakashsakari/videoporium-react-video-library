@@ -9,8 +9,8 @@
   .loader {
     width: 8rem;
     height: 8rem;
-    border: 10px solid var(--accent-color); /* Light grey */
-    border-top: 10px solid var(--primary-color); /* Blue */
+    border: 10px solid var(--accent-color); 
+    border-top: 10px solid var(--primary-color); 
     border-radius: 50%;
     animation: spinner 1.5s linear infinite;
   }
