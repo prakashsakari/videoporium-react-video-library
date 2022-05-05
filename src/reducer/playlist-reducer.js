@@ -1,71 +1,77 @@
-export const playlistReducer = (liked, { type, payload }) => {
+export const playlistReducer = (playlistState, { type, payload }) => {
     switch (type) {
         case "LIKED":
             return {
-            ...liked,
-            likedVideos: !liked.likedVideos.some(
+            ...playlistState,
+            likedVideos: !playlistState.likedVideos.some(
                 (video) => video._id === payload._id
             )
-                ? [...liked.likedVideos, payload]
-                : liked.likedVideos
+                ? [...playlistState.likedVideos, payload]
+                : playlistState.likedVideos
             };
         
         case "REMOVE_FROM_LIKE":
             return {
-                ...liked,
-                likedVideos: liked.likedVideos.filter((video) => video._id !== payload)
+                ...playlistState,
+                likedVideos: playlistState.likedVideos.filter((video) => video._id !== payload)
             };
         
         case "WATCH_LATER":
             return {
-                ...liked,
-                watchLater: !liked.watchLater.some((video) => video._id === payload._id)
-                ? [...liked.watchLater, payload]
-                : liked.watchLater
+                ...playlistState,
+                watchLater: !playlistState.watchLater.some((video) => video._id === payload._id)
+                ? [...playlistState.watchLater, payload]
+                : playlistState.watchLater
             };
         
         case "REMOVE_FROM_WL":
             return {
-                ...liked,
-                watchLater: liked.watchLater.filter((video) => video._id !== payload)
+                ...playlistState,
+                watchLater: playlistState.watchLater.filter((video) => video._id !== payload)
             };
 
         case "HISTORY":
             return {
-                ...liked,
-                history: !liked.history.some((video) => video._id === payload._id)
-                ? [...liked.history, payload]
-                : liked.history
+                ...playlistState,
+                history: !playlistState.history.some((video) => video._id === payload._id)
+                ? [...playlistState.history, payload]
+                : playlistState.history
             };
         
         case "CLEAR_HISTORY":
             return {
-                ...liked,
+                ...playlistState,
                 history: []
             };
 
         case "SET_OPTION":
             return {
-                ...liked,
+                ...playlistState,
                 option: payload
             };
         
         case "DELETE":
             return {
-                ...liked,
+                ...playlistState,
                 likedVideos:
-                liked.option === "liked-video"
-                    ? liked.likedVideos.filter((video) => video._id !== payload._id)
-                    : liked.likedVideos,
+                playlistState.option === "liked-video"
+                    ? playlistState.likedVideos.filter((video) => video._id !== payload._id)
+                    : playlistState.likedVideos,
                 history:
-                liked.option === "history"
-                    ? liked.history.filter((video) => video._id !== payload._id)
-                    : liked.history,
+                playlistState.option === "history"
+                    ? playlistState.history.filter((video) => video._id !== payload._id)
+                    : playlistState.history,
                 watchLater:
-                liked.option === "watch-later"
-                    ? liked.watchLater.filter((video) => video._id !== payload._id)
-                    : liked.watchLater,
+                playlistState.option === "watch-later"
+                    ? playlistState.watchLater.filter((video) => video._id !== payload._id)
+                    : playlistState.watchLater,
             };
+        
+        case "SET_PLAYLIST":
+            return{
+                ...playlistState,
+                playlists: payload
+            }
     
         default:
             return liked;
