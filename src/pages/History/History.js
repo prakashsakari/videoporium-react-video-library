@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Navbar, SideBar, LikedVideo } from "../../components";
+import { Navbar, SideBar, HorizontalVideoCard } from "../../components";
 import { usePlaylist } from "../../context";
 import "../Playlist.css"
 
@@ -27,7 +27,7 @@ export const History = () => {
             </button>
           </div>
           {history.length > 0 ? (
-            history?.map((video) => <LikedVideo video={video} />)
+            history?.map((video) => <HorizontalVideoCard video={video} />)
           ) : (
             <div className="notify-message">
               <h3 className="heading-3">

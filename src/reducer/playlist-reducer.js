@@ -13,7 +13,7 @@ export const playlistReducer = (liked, { type, payload }) => {
         case "REMOVE_FROM_LIKE":
             return {
                 ...liked,
-                likedVideos: liked.likedVideos.filter((video) => video._id !== payload)
+                likedVideos: liked.likedVideos.filter((video) => video._id !== payload._id)
             };
         
         case "WATCH_LATER":

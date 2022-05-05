@@ -1,9 +1,9 @@
 import {useNavigate} from "react-router-dom";
 import { usePlaylist } from "../../context";
 
-export const LikedVideo = ({ video }) => {
+export const HorizontalVideoCard = ({ video }) => {
     const { image, length, icon, title, channelName, views, _id } = video;
-    const { playlistDispatch } = usePlaylist();
+    const { playlistDispatch, removeFromLikedVideo } = usePlaylist();
     const navigate = useNavigate();
   
     return (
@@ -28,12 +28,15 @@ export const LikedVideo = ({ video }) => {
         </div>
         </div>
         <button className="button absolute top-0 right-0 del-btn" >
-          <span class="material-icons cursor" onClick={() =>
-            playlistDispatch({
-              type: "DELETE",
-              payload: video
-            })
-          }>delete_outline</span>
+          <span class="material-icons cursor" 
+                // onClick={() =>
+                //   playlistDispatch({
+                //     type: "DELETE",
+                //     payload: video
+                //   })
+                // }
+                onClick={() => removeFromLikedVideo(video)}
+          >delete_outline</span>
         </button>
       </div>
     );

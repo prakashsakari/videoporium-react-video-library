@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png"
 import "./Navbar.css";
-import { useCategory } from "../../context";
+import { useCategory, useAuth } from "../../context";
 export const Navbar = () => {
 
   const {categoryDispatch} = useCategory();
+
+  const {
+    credentials: { userName, },logOutHandler, eToken, euser
+  } = useAuth();
 
   return (
     <header class="heading d-flex align-center fixed top-0 left-0">
@@ -40,9 +44,13 @@ export const Navbar = () => {
       <nav class="navigation">
         <ul class="list-non-bullet d-flex align-center gap">
           <li class="list-item-inline">
-            <Link to="/login" class="link cursor">
-              Login
-            </Link>
+          <button
+            to="/login"
+            class="cursor button btn-primary"
+            onClick={() => logOutHandler()}>{eToken
+                ? "Logout"
+                : "Login"}
+          </button>
           </li>
         </ul>
       </nav>

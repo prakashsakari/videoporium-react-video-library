@@ -1,25 +1,40 @@
-import { usePlaylist } from "../../context/";
+import { useNavigate } from "react-router-dom";
+import { usePlaylist, useAuth } from "../../context/";
 import { isLiked, isInWatchlater } from "../../utils";
 import "./VideoDetails.css"
 
 export const VideoDetails = ({_id, title, channelName, views, description, singleVideo}) => {
-    const { likedVideos, watchLater , playlistDispatch } = usePlaylist();
-
+    const { likedVideos, watchLater , playlistDispatch, addToLikedVideo, removeFromLikedVideo } = usePlaylist();
     const liked = isLiked(likedVideos, _id);
     const watchlater = isInWatchlater(watchLater, _id);
 
+    const {eToken} = useAuth();
+
+    const navigate = useNavigate();
+
     const handleLikeClick = () => {
-        if (!liked) {
-          playlistDispatch({
-            type: "LIKED",
-            payload: singleVideo
-          });
-        } else {
-          playlistDispatch({
-            type: "REMOVE_FROM_LIKE",
-            payload: _id
-          });
+      if (eToken){
+        if (!liked){
+          addToLikedVideo(singleVideo);
+        }else{
+          removeFromLikedVideo(singleVideo)
         }
+        
+      }else{
+        navigate("/")
+      }
+        // if (!liked) {
+        //   playlistDispatch({
+        //     type: "LIKED",
+        //     payload: singleVideo
+        //   });
+        // } else {
+        //   playlistDispatch({
+        //     type: "REMOVE_FROM_LIKE",
+        //     payload: _id
+        //   });
+        // }
+        
       };
     
       const handleWatchLaterClick = () => {
