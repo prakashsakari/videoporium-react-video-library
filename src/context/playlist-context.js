@@ -9,7 +9,6 @@ const PlaylistProvider = ({ children }) => {
   useEffect(() => {
     if (JSON.parse(localStorage.getItem("likes" ?? ""))){
       const likes = JSON.parse(localStorage.getItem("likes"));
-      console.log("Liked videos on render -", likes)
       likes && likes.length > 0 && likes.map(video => playlistDispatch({
         type: "LIKED",
         payload: video

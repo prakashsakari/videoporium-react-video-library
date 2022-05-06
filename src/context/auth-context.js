@@ -16,7 +16,6 @@ const AuthProvider = ({children}) => {
     useEffect (() => {
         const sessionToken = localStorage.getItem("token");
         const availableUser = JSON.parse(localStorage.getItem("user"));
-        console.log("Found User -", availableUser);
         if (sessionToken) {
             setEToken(sessionToken)
         }
@@ -47,13 +46,10 @@ const AuthProvider = ({children}) => {
 
     const userLogin = async (email, password) => {
         try {
-            console.log("from try - ", email, password)
             const {data : {foundUser, encodedToken}, status} = await axios.post("/api/auth/login", {
                 email: email,
                 password: password
             });
-            console.log(encodedToken);
-            console.log("User Found - ", foundUser);
             if (status === 200){
                 localStorage.setItem("token", encodedToken);
                 setEToken(encodedToken);

@@ -18,7 +18,6 @@ export const VideoDetails = ({_id, title, channelName, views, description, singl
       if (eToken){
         if (!liked){
           const likes = await addToLikedVideo(singleVideo);
-          console.log("Liked videos -", likes)
           likes.map(video => playlistDispatch({
             type: "LIKED",
             payload: video
@@ -26,7 +25,6 @@ export const VideoDetails = ({_id, title, channelName, views, description, singl
           
         }else{
           const removedLikes = await removeFromLikedVideo(singleVideo);
-          console.log("Removed from Liked videos -", removedLikes)
           playlistDispatch({
             type: "REMOVE_FROM_LIKE",
             payload: singleVideo

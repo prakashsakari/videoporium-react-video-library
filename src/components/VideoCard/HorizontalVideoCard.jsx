@@ -12,7 +12,6 @@ export const HorizontalVideoCard = ({ video }) => {
     const handleDeleteClick = async () => {
       if  (option === "liked-video"){
         const removedLikes = await removeFromLikedVideo(video);
-        console.log("Removed from Liked videos -", removedLikes)
         playlistDispatch({
           type: "REMOVE_FROM_LIKE",
           payload: video
