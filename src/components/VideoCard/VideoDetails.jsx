@@ -1,10 +1,12 @@
 import { useNavigate } from "react-router-dom";
+
 import { usePlaylist, useAuth } from "../../context/";
 import { isLiked, isInWatchlater } from "../../utils";
+import { addToLikedVideo, removeFromLikedVideo, addToWatchLater, removeFromWatchLater } from "../../playlistServices";
 import "./VideoDetails.css"
 
 export const VideoDetails = ({_id, title, channelName, views, description, singleVideo}) => {
-    const { likedVideos, watchLater , playlistDispatch, addToLikedVideo, removeFromLikedVideo } = usePlaylist();
+    const { likedVideos, watchLater , playlistDispatch } = usePlaylist();
     const liked = isLiked(likedVideos, _id);
     const watchlater = isInWatchlater(watchLater, _id);
 
@@ -12,42 +14,48 @@ export const VideoDetails = ({_id, title, channelName, views, description, singl
 
     const navigate = useNavigate();
 
-    const handleLikeClick = () => {
+    const handleLikeClick = async () => {
       if (eToken){
         if (!liked){
-          addToLikedVideo(singleVideo);
+          const likes = await addToLikedVideo(singleVideo);
+          console.log("Liked videos -", likes)
+          likes.map(video => playlistDispatch({
+            type: "LIKED",
+            payload: video
+          }))
+          
         }else{
-          removeFromLikedVideo(singleVideo)
+          const removedLikes = await removeFromLikedVideo(singleVideo);
+          console.log("Removed from Liked videos -", removedLikes)
+          playlistDispatch({
+            type: "REMOVE_FROM_LIKE",
+            payload: singleVideo
+          })
+          
         }
-        
       }else{
-        navigate("/")
+        navigate("/login")
       }
-        // if (!liked) {
-        //   playlistDispatch({
-        //     type: "LIKED",
-        //     payload: singleVideo
-        //   });
-        // } else {
-        //   playlistDispatch({
-        //     type: "REMOVE_FROM_LIKE",
-        //     payload: _id
-        //   });
-        // }
         
       };
     
-      const handleWatchLaterClick = () => {
-        if (!watchlater) {
-          playlistDispatch({
-            type: "WATCH_LATER",
-            payload: singleVideo
-          });
-        } else {
-          playlistDispatch({
-            type: "REMOVE_FROM_WL",
-            payload: _id
-          });
+      const handleWatchLaterClick = async () => {
+        if (eToken){
+          if (!watchlater){
+            const watchlaterVideo = await addToWatchLater(singleVideo);
+            playlistDispatch({
+              type: "WATCH_LATER",
+              payload: singleVideo
+            });
+          }else{
+            const removedwatchlaterVideo = await removeFromWatchLater(singleVideo);
+            playlistDispatch({
+              type: "REMOVE_FROM_WL",
+              payload: singleVideo
+            });
+          }
+        }else{
+          navigate("/login")
         }
       };
 

@@ -9,11 +9,9 @@ const AuthContext = createContext();
 const AuthProvider = ({children}) => {
     const [eToken, setEToken] = useState("");
     const [euser, setEUser] = useState("");
-    const [getName, setGetName] = useState("");
     const [credentials, credentialsDispatch] = useReducer(credentialsReducer, {email: "", password: "", userPassword:"", userConfirmPassword:"", isEmailValid:true, userEmail:"", display:"none", userName:"", userLastName:"" });
     const navigate = useNavigate();
     const location = useLocation();
-
 
     useEffect (() => {
         const sessionToken = localStorage.getItem("token");
@@ -61,7 +59,6 @@ const AuthProvider = ({children}) => {
                 setEToken(encodedToken);
                 localStorage.setItem("user", JSON.stringify(foundUser))
                 setEUser(JSON.parse(localStorage.getItem("user")).firstName);
-                // navigate("/");
                 navigate(location?.state?.from?.pathname || "/", { replace: true });
             }
         }catch (err){
@@ -73,7 +70,12 @@ const AuthProvider = ({children}) => {
         if (eToken){
             setEToken("");
             setEUser("");
-            navigate("/")
+            localStorage.removeItem("token");
+            localStorage.removeItem("likes");
+            localStorage.removeItem("watchlater");
+            localStorage.removeItem("user");
+            localStorage.removeItem("history");
+            navigate("/");
         }else{
             navigate("/login")
         }

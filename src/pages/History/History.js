@@ -1,11 +1,20 @@
 import { useNavigate } from "react-router-dom";
+
 import { Navbar, SideBar, HorizontalVideoCard } from "../../components";
 import { usePlaylist } from "../../context";
+import { removeAllFromHistory } from "../../playlistServices";
 import "../Playlist.css"
 
 export const History = () => {
   const { history, playlistDispatch } = usePlaylist();
   const navigate = useNavigate();
+
+  const handleClearAllClick = async () => {
+    const clearedVideo = await removeAllFromHistory();
+    playlistDispatch({
+      type: "CLEAR_HISTORY"
+  });
+  }
   
   return (
     <>
@@ -17,11 +26,7 @@ export const History = () => {
             <h2 className="heading-2">History</h2>
             <button
               className="button gap-12px cursor d-flex align-center clear-all"
-              onClick={() =>
-                playlistDispatch({
-                  type: "CLEAR_HISTORY"
-                })
-              }
+              onClick={handleClearAllClick}
             >
               Clear All <span class="material-icons-outlined">clear_all</span>{" "}
             </button>

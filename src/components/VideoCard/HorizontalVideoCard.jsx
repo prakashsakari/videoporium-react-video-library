@@ -1,10 +1,36 @@
 import {useNavigate} from "react-router-dom";
+import { useEffect } from "react";
+
 import { usePlaylist } from "../../context";
+import { removeFromLikedVideo, removeFromWatchLater, removeFromHistory } from "../../playlistServices";
 
 export const HorizontalVideoCard = ({ video }) => {
     const { image, length, icon, title, channelName, views, _id } = video;
-    const { playlistDispatch, removeFromLikedVideo } = usePlaylist();
     const navigate = useNavigate();
+    const { option, playlistDispatch} = usePlaylist();
+
+    const handleDeleteClick = async () => {
+      if  (option === "liked-video"){
+        const removedLikes = await removeFromLikedVideo(video);
+        console.log("Removed from Liked videos -", removedLikes)
+        playlistDispatch({
+          type: "REMOVE_FROM_LIKE",
+          payload: video
+        }) 
+      }else if (option === "watch-later"){
+        const removedwatchlaterVideo = await removeFromWatchLater(video);
+        playlistDispatch({
+          type: "REMOVE_FROM_WL",
+          payload: video
+        });
+      }else if (option === "history"){
+        const removedFromHistory = await removeFromHistory(video);
+        playlistDispatch({
+          type: "REMOVE_FROM_HISTORY",
+          payload: video
+      });
+      }
+    }
   
     return (
       <div className="single-video-container relative">
@@ -29,13 +55,7 @@ export const HorizontalVideoCard = ({ video }) => {
         </div>
         <button className="button absolute top-0 right-0 del-btn" >
           <span class="material-icons cursor" 
-                // onClick={() =>
-                //   playlistDispatch({
-                //     type: "DELETE",
-                //     payload: video
-                //   })
-                // }
-                onClick={() => removeFromLikedVideo(video)}
+                onClick={handleDeleteClick}
           >delete_outline</span>
         </button>
       </div>
