@@ -1,10 +1,35 @@
 import {useNavigate} from "react-router-dom";
-import { usePlaylist } from "../../context";
+import { useEffect } from "react";
 
-export const LikedVideo = ({ video }) => {
+import { usePlaylist } from "../../context";
+import { removeFromLikedVideo, removeFromWatchLater, removeFromHistory } from "../../playlistServices";
+
+export const HorizontalVideoCard = ({ video }) => {
     const { image, length, icon, title, channelName, views, _id } = video;
-    const { playlistDispatch } = usePlaylist();
     const navigate = useNavigate();
+    const { option, playlistDispatch} = usePlaylist();
+
+    const handleDeleteClick = async () => {
+      if  (option === "liked-video"){
+        const removedLikes = await removeFromLikedVideo(video);
+        playlistDispatch({
+          type: "REMOVE_FROM_LIKE",
+          payload: video
+        }) 
+      }else if (option === "watch-later"){
+        const removedwatchlaterVideo = await removeFromWatchLater(video);
+        playlistDispatch({
+          type: "REMOVE_FROM_WL",
+          payload: video
+        });
+      }else if (option === "history"){
+        const removedFromHistory = await removeFromHistory(video);
+        playlistDispatch({
+          type: "REMOVE_FROM_HISTORY",
+          payload: video
+      });
+      }
+    }
   
     return (
       <div className="single-video-container relative">
@@ -28,12 +53,9 @@ export const LikedVideo = ({ video }) => {
         </div>
         </div>
         <button className="button absolute top-0 right-0 del-btn" >
-          <span class="material-icons cursor" onClick={() =>
-            playlistDispatch({
-              type: "DELETE",
-              payload: video
-            })
-          }>delete_outline</span>
+          <span class="material-icons cursor" 
+                onClick={handleDeleteClick}
+          >delete_outline</span>
         </button>
       </div>
     );

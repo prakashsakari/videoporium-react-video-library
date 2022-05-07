@@ -1,10 +1,21 @@
-import { Link } from "react-router-dom";
 import logo from "../../assets/logo.png"
 import "./Navbar.css";
-import { useCategory } from "../../context";
+import { useCategory, useAuth, usePlaylist } from "../../context";
 export const Navbar = () => {
 
   const {categoryDispatch} = useCategory();
+
+  const { logOutHandler, eToken, euser
+  } = useAuth();
+
+  const { playlistDispatch} = usePlaylist();
+
+  const handleLogoutClick = () => {
+    logOutHandler();
+    playlistDispatch({
+      type: "CLEAR_ALL"
+  })
+  }
 
   return (
     <header class="heading d-flex align-center fixed top-0 left-0">
@@ -39,10 +50,17 @@ export const Navbar = () => {
       </div>
       <nav class="navigation">
         <ul class="list-non-bullet d-flex align-center gap">
+        {eToken && euser.length > 0 ? (
+            <li className="list-item-inline">{`Hi, ${euser}`}</li>
+          ) : ""}
           <li class="list-item-inline">
-            <Link to="/login" class="link cursor">
-              Login
-            </Link>
+          <button
+            to="/login"
+            class="cursor button btn-primary auth-btn"
+            onClick={handleLogoutClick}>{eToken
+                ? "Logout"
+                : "Login"}
+          </button>
           </li>
         </ul>
       </nav>
