@@ -1,5 +1,6 @@
 import "./App.css";
-import { Home, SingleVideo, Liked, WatchLater, History } from "./pages";
+import {RequiresAuth, PlaylistVideoContainer} from "./components";
+import { Home, SingleVideo, Liked, WatchLater, History, Login, SignUp, Playlists } from "./pages";
 import { Routes, Route } from "react-router-dom";
 
 export default function App() {
@@ -7,9 +8,13 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/video/:videoId" element={<SingleVideo />} />
-      <Route path="/liked" element={<Liked />} />
-      <Route path="/watchlater" element={<WatchLater />} />
-      <Route path="/history" element={<History />} />
+      <Route path="/liked" element={<RequiresAuth><Liked /></RequiresAuth>} />
+      <Route path="/watchlater" element={<RequiresAuth><WatchLater /></RequiresAuth>} />
+      <Route path="/history" element={<RequiresAuth><History /></RequiresAuth>} />
+      <Route path="/playlist" element={<RequiresAuth><Playlists /></RequiresAuth>} />
+      <Route path="/playlist/:id" element={<RequiresAuth><PlaylistVideoContainer /></RequiresAuth>} />
+      <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
     </Routes>
   );
 }

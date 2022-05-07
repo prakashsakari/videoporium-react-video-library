@@ -17,6 +17,12 @@ export const modalReducer = (modalState, { type, payload }) => {
           ...modalState,
           playlistName: payload
         }
+      
+      case "CLEAR_PLAYLIST_NAME":
+        return {
+          ...modalState,
+          playlistName: ""
+        }
   
       default:
         return modalState;

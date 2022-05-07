@@ -1,38 +1,49 @@
 import {useNavigate} from "react-router-dom";
-import { usePlaylist } from "../../context";
+
+import { usePlaylist, useAuth } from "../../context";
 import {isInWatchlater} from "../../utils";
+import {addToWatchLater, removeFromWatchLater, addToHistory} from "../../playlistServices";
 import "./VideoCard.css";
 
 export const VideoCard = ({ video }) => {
   const { _id, image, length, icon, title, channelName, views } = video;
-  const { playlistDispatch, watchLater } = usePlaylist();
+  const { playlistDispatch, watchLater} = usePlaylist();
   const watchlater = isInWatchlater(watchLater, video._id);
   const navigate = useNavigate();
+  const {eToken} = useAuth();
 
-  const handleWatchLaterClick = () => {
-    if (!watchlater) {
-      playlistDispatch({
-        type: "WATCH_LATER",
-        payload: video
-      });
-    } else {
-      playlistDispatch({
-        type: "REMOVE_FROM_WL",
-        payload: video._id
-      });
+  const handleWatchLaterClick = async () => {
+    if (eToken){
+      if (!watchlater){
+        const watchlaterVideo = await addToWatchLater(video);
+        playlistDispatch({
+          type: "WATCH_LATER",
+          payload: video
+        });
+      }else{
+        const removedwatchlaterVideo = await removeFromWatchLater(video);
+        playlistDispatch({
+          type: "REMOVE_FROM_WL",
+          payload: video
+        });
+      }
+    }else{
+      navigate("/login")
     }
   };
+
+  const handleHistoryClick = async () => {
+      navigate(`/video/${_id}`);
+      const historyVideos = await addToHistory(video);
+      playlistDispatch({
+        type: "HISTORY",
+        payload: video
+      });
+    }
   
   return (
     <div class="video-card relative">
-        <div className="link col-flex-util gap-12px" onClick={() => {
-            navigate(`/video/${_id}`)
-            playlistDispatch({
-              type: "HISTORY",
-              payload: video
-            });
-
-            }}>
+        <div className="link col-flex-util gap-12px" onClick={handleHistoryClick}>
           <div class="thumbnail-container">
             <img class="thumbnail" src={image} alt="thumbnail" />
             <span class="video-length absolute right-0">{length}</span>

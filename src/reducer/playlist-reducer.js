@@ -13,7 +13,7 @@ export const playlistReducer = (playlistState, { type, payload }) => {
         case "REMOVE_FROM_LIKE":
             return {
                 ...playlistState,
-                likedVideos: playlistState.likedVideos.filter((video) => video._id !== payload)
+                likedVideos: playlistState.likedVideos.filter((video) => video._id !== payload._id)
             };
         
         case "WATCH_LATER":
@@ -27,7 +27,7 @@ export const playlistReducer = (playlistState, { type, payload }) => {
         case "REMOVE_FROM_WL":
             return {
                 ...playlistState,
-                watchLater: playlistState.watchLater.filter((video) => video._id !== payload)
+                watchLater: playlistState.watchLater.filter((video) => video._id !== payload._id)
             };
 
         case "HISTORY":
@@ -37,6 +37,12 @@ export const playlistReducer = (playlistState, { type, payload }) => {
                 ? [...playlistState.history, payload]
                 : playlistState.history
             };
+        
+        case "REMOVE_FROM_HISTORY":
+            return {
+                ...playlistState,
+                history: playlistState.history.filter((video) => video._id !== payload._id)
+            }
         
         case "CLEAR_HISTORY":
             return {
@@ -68,13 +74,41 @@ export const playlistReducer = (playlistState, { type, payload }) => {
             };
         
         case "SET_PLAYLIST":
-            return{
+            return {
                 ...playlistState,
                 playlists: payload
             }
+        
+        case "ADD_TO_PLAYLIST":
+            return {
+                ...playlistState,
+                playlists: playlistState.playlists.map(playlist => playlist._id === payload.playlistId ? {...playlist, videos: [...playlist.videos, payload.singleVideo]}: playlist)
+            }
+        
+
+        case "REMOVE_FROM_PLAYLIST":
+            return {
+                ...playlistState,
+                playlists: playlistState.playlists.map(playlist => playlist._id === payload.playlistId ? {...playlist, videos: playlist.videos.filter(video => video._id !== payload.singleVideo._id)} : playlist)
+            }
+        
+        case "DELETE_PLAYLIST":
+            return {
+                ...playlistState,
+                playlists: playlistState.playlists.filter(({_id}) => _id !== payload)
+            }
+
+        case "CLEAR_ALL":
+            return {
+                ...playlistState,
+                likedVideos: [],
+                watchLater: [],
+                history: [],
+                playlists: []
+            }
     
         default:
-            return liked;
+            return playlistState;
     }
 };
   

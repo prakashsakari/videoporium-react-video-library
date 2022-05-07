@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Navbar, LikedVideo, SideBar } from "../../components";
+import { Navbar, HorizontalVideoCard, SideBar } from "../../components";
 import { usePlaylist } from "../../context";
 import "../Playlist.css"
 
@@ -15,7 +15,7 @@ export const Liked = () => {
         <main className="main-video-container scrollable-element">
           <h2 className="heading-2 page-title title-width">Liked Videos</h2>
           {likedVideos && likedVideos.length > 0 ? (
-            likedVideos.map((video) => <LikedVideo video={video} key={video._id}/>)
+            likedVideos.map((video) => <HorizontalVideoCard video={video} key={video._id}/>)
           ) : (
             <div className="notify-message">
               <h3 className="heading-3">

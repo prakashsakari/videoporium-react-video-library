@@ -1,0 +1,1 @@
+export const getPlaylist = (playlisId, playlists) => playlists.find(({_id}) => _id === playlisId);

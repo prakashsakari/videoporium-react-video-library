@@ -1,0 +1,86 @@
+.d-grid {
+    margin-top: 7rem;
+    margin-bottom: 1rem;
+    display: grid;
+    place-content: center center;
+}
+
+.login-auth {
+    width: 33rem;
+    background-color: var(--card-background);
+    padding: 2rem 2rem 0 2rem;
+}
+
+.auth-title {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.form-input {
+    width: 26rem;
+    margin: 4px 0;
+    font-size: 1rem;
+}
+
+.form-label {
+    padding: 0;
+    text-decoration: none;
+}
+
+.form-container {
+    margin: 1rem 0;
+}
+
+.label-remember {
+    font-size: 1.25rem;
+}
+
+.login-btn {
+    width: 26rem;
+}
+
+.create-account {
+    margin: 1rem 0;
+}
+
+.new-account {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.flex-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.create-acc {
+    text-decoration: none;
+    color: var(--text-color-primary);
+}
+
+.pwd-icon-position {
+    top: 2.5rem;
+    right: 3.5rem;
+}
+
+.pass-check-text {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--secondary-color);
+    color: var(--text-color-primary);
+    width: max-content;
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.display-n {
+    display: none;
+}
+
+.sign-up-btn[disabled]:hover {
+    cursor: none;
+    background-color: var(--secondary-color);
+    color: var(--text-color-primary);
+}

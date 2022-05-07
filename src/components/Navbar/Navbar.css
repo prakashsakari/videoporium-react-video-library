@@ -42,3 +42,7 @@
 .search-box:focus{
     outline: 1px solid var(--accent-color);
 }
+
+.auth-btn{
+    background-color: transparent;
+    color: var(--primary-color)}
