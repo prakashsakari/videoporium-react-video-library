@@ -1,6 +1,5 @@
-import { createContext, useContext, useState, useReducer } from "react";
+import { createContext, useContext, useState, useReducer, useEffect } from "react";
 import axios from "axios";
-import { useEffect} from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { credentialsReducer } from "../reducer";
 
@@ -66,11 +65,7 @@ const AuthProvider = ({children}) => {
         if (eToken){
             setEToken("");
             setEUser("");
-            localStorage.removeItem("token");
-            localStorage.removeItem("likes");
-            localStorage.removeItem("watchlater");
-            localStorage.removeItem("user");
-            localStorage.removeItem("history");
+            localStorage.clear();
             navigate("/");
         }else{
             navigate("/login")

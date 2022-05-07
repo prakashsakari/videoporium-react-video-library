@@ -7,6 +7,29 @@ export const AuthLogin = () => {
     const [passwordtype, setPasswordType] = useState("password");
     const {userLogin, credentials, credentialsDispatch} = useAuth();
 
+    const handleEmailInputChange = (event) => {
+        credentialsDispatch({type: "EMAIL", payload: event.target.value})
+    }
+
+    const handlePasswordInputChange = (event) => {
+        credentialsDispatch({type: "PASSWORD", payload: event.target.value})
+    }
+
+    const handlePasswordCheck = () => {
+        passwordtype === "password" ? setPasswordType("text") : setPasswordType("password")
+    }
+
+    const handleTestCredentialsLogin = () => {
+        userLogin("adarshbalika@gmail.com", "adarshBalika123")
+    }
+
+    const handleLoginClick = () => {
+        if (credentials.email !== "" && credentials.password !== "") {
+            userLogin(credentials.email, credentials.password)
+        }
+        credentialsDispatch({type: "CLEAR_LOGIN_CREDENTIALS"})
+    }
+
     return (
         <div className="d-grid">
             <div className="login-auth direction-column d-flex justify-center">
@@ -18,7 +41,7 @@ export const AuthLogin = () => {
                         className="form-input lh-ls"
                         placeholder="name@example.com"
                         value={credentials.email}
-                        onChange={(event) => credentialsDispatch({type: "EMAIL", payload: event.target.value})}/>
+                        onChange={handleEmailInputChange}/>
                 </div>
                 {!credentials.isEmailValid && credentials.email !== "" && (
                     <p className="pass-check-text">
@@ -32,13 +55,9 @@ export const AuthLogin = () => {
                         className="form-input lh-ls"
                         placeholder="*********"
                         value={credentials.password}
-                        onChange={(event) => credentialsDispatch({type: "PASSWORD", payload: event.target.value})}/>
+                        onChange={handlePasswordInputChange}/>
                     <button class="button cursor"
-                        onClick={() =>
-                            passwordtype === "password"
-                            ? setPasswordType("text")
-                            : setPasswordType("password")
-                        }>
+                        onClick={handlePasswordCheck}>
                         <span class="material-icons-outlined absolute pwd-icon-position">
                             visibility_off
                         </span>
@@ -57,17 +76,12 @@ export const AuthLogin = () => {
                 <div className="cta">
                     <button
                         className="login-btn button btn-primary cursor btn-margin sign-up-btn"
-                        onClick={() => {
-                        if (credentials.email !== "" && credentials.password !== "") {
-                            userLogin(credentials.email, credentials.password)
-                        }
-                        credentialsDispatch({type: "CLEAR_LOGIN_CREDENTIALS"})
-                    }}>
+                        onClick={handleLoginClick}>
                         Login
                     </button>
                     <button
                         className="login-btn button btn-primary cursor btn-margin sign-up-btn"
-                        onClick={() => userLogin("adarshbalika@gmail.com", "adarshBalika123")}>
+                        onClick={handleTestCredentialsLogin}>
                         Login with Test Credentials
                     </button>
 
