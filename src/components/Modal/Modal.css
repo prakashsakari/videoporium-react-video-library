@@ -1,0 +1,72 @@
+.modal-container {
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid var(--accent-color);
+    z-index: 1;
+}
+
+.modal-container .m-box {
+    width: 20vw;
+    background-color: white;
+    font-weight: bold;
+    padding: 0.5rem;
+}
+
+.modal-nav {
+    border-bottom: 1px solid var(--accent-color);
+    justify-content: space-between;
+    padding-bottom: .5rem;
+    margin-bottom: 0.5rem;
+}
+
+.col-flex-util {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.gap-12px {
+    gap: 12px;
+}
+
+.gap-8px {
+    gap: 8px;
+}
+
+.playlist-btn {
+    margin-top: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.title-input {
+    width: 19vw;
+    height: 5vh;
+    padding: 0.5rem;
+    border: 1px solid var(--accent-color);
+    font-size: 1rem;
+    background-color: var(--background-color);
+    border-radius: 4px;
+}
+
+.title-input:focus {
+    border: none;
+    outline-color: var(--accent-color);
+}
+
+.d-none {
+    display: none;
+}
+
+.create-btn {
+    align-self: center;
+}
+
+.playlist-btn {
+    width: 100%;
+    border-top: 1px solid var(--accent-color);
+}

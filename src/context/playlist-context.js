@@ -4,7 +4,7 @@ import { playlistReducer } from "../reducer";
 const PlaylistContext = createContext();
 
 const PlaylistProvider = ({ children }) => {
-  const [{likedVideos, watchLater, history, option}, playlistDispatch] = useReducer(playlistReducer, { likedVideos: [], watchLater: [], history: [], option: "" });
+  const [{likedVideos, watchLater, history, playlists, option}, playlistDispatch] = useReducer(playlistReducer, { likedVideos: [], watchLater: [], history: [], playlists: [], option: "" });
 
   useEffect(() => {
     const likes = JSON.parse(localStorage.getItem("likes"));
@@ -32,6 +32,15 @@ const PlaylistProvider = ({ children }) => {
   }, [])
 
   useEffect(() => {
+    const playlists = JSON.parse(localStorage.getItem("playlists"));
+    console.log("Playlist on render-", playlists);
+    playlists && playlists.length > 0 && playlistDispatch({
+      type: "SET_PLAYLIST",
+      payload: playlists
+    })
+  }, [])
+
+  useEffect(() => {
     const value = localStorage.getItem("option");
     value && playlistDispatch({
       type: "SET_OPTION",
@@ -46,7 +55,7 @@ const PlaylistProvider = ({ children }) => {
 
 
   return (
-    <PlaylistContext.Provider value={{ likedVideos, watchLater, history, option, playlistDispatch }}>
+    <PlaylistContext.Provider value={{ likedVideos, watchLater, history, playlists, option, playlistDispatch }}>
       {children}
     </PlaylistContext.Provider>
   );

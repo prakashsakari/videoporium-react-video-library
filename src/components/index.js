@@ -9,3 +9,4 @@ export {Loader} from "./Loader/Loader";
 export { AuthLogin } from "./Auth/Login";
 export { AuthSignUp } from "./Auth/SignUp";
 export {RequiresAuth} from "./RequiresAuth/RequiresAuth";
+export { PlaylistVideoContainer } from "./PlaylistVideoContainer/PlaylistVideoContainer";

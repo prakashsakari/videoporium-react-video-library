@@ -18,4 +18,17 @@
 .notify-message {
     text-align: center;
 }
+
+.playlist-box {
+    width: 35vw;
+    padding: 1rem;
+}
   
+.playlist-container {
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+  
+.playlist-box:hover {
+    cursor: pointer;
+}

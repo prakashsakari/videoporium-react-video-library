@@ -1,10 +1,9 @@
 import {useNavigate} from "react-router-dom";
-import { useEffect } from "react";
 
 import { usePlaylist } from "../../context";
-import { removeFromLikedVideo, removeFromWatchLater, removeFromHistory } from "../../playlistServices";
+import { removeFromLikedVideo, removeFromWatchLater, removeFromHistory, removeFromPlaylist } from "../../playlistServices";
 
-export const HorizontalVideoCard = ({ video }) => {
+export const HorizontalVideoCard = ({ video, playlistId }) => {
     const { image, length, icon, title, channelName, views, _id } = video;
     const navigate = useNavigate();
     const { option, playlistDispatch} = usePlaylist();
@@ -28,6 +27,15 @@ export const HorizontalVideoCard = ({ video }) => {
           type: "REMOVE_FROM_HISTORY",
           payload: video
       });
+      }else if (option === "playlist"){
+        const videoRemovedFromPlaylist = await removeFromPlaylist(playlistId, video);
+        playlistDispatch({
+          type: "REMOVE_FROM_PLAYLIST",
+          payload:{
+            playlistId, 
+            singleVideo: video
+          }
+        })
       }
     }
   

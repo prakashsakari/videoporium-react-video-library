@@ -30,6 +30,12 @@ export const SideBar = () => {
             <span className="item-title">Liked</span>
           </NavLink>
           <NavLink to="/playlist"
+            onClick={() => 
+              playlistDispatch({
+                type: "SET_OPTION",
+                payload: "playlist"
+              })
+            }
             className={({ isActive }) =>
               `${isActive ? "selected br" : ""} list-item-drawer pointer`
             }>
