@@ -3,7 +3,6 @@
     padding: 0.5rem;
     border: 1px solid var(--accent-color);
     border-radius: 4px;
-    cursor: pointer;
 }
   
 .col-flex-util {
@@ -16,6 +15,7 @@
     position: relative;
     width: 23.875rem;
     height: 13.44rem;
+    cursor: pointer;
 }
   
 .thumbnail {
@@ -36,8 +36,13 @@
 }
   
 .about-video {
+    margin-top: 8px;
     align-items: flex-start;
     width: 24vw;
+}
+
+.video-details {
+    width: 80%;
 }
   
 .channel-icon {
@@ -60,6 +65,6 @@
 }
 
 .option {
-    bottom: 5rem;
-    right: 0.3rem;
+    top: -8px;
+    right: -10px;
 }
