@@ -48,7 +48,8 @@ export const VideoCard = ({ video }) => {
             <img class="thumbnail" src={image} alt="thumbnail" />
             <span class="video-length absolute right-0">{length}</span>
           </div>
-          <div class="about-video d-flex gap-12px">
+        </div>
+          <div class="about-video d-flex gap-12px relative">
               <div class="channel-icon-container">
                 <img class="channel-icon" src={icon} alt="icon" />
               </div>
@@ -59,15 +60,21 @@ export const VideoCard = ({ video }) => {
                   <span class="material-icons-outlined">live_tv</span> {views} views
                 </h4>
               </div>
-          </div>
-        </div>
-        <button
+              <button
             class="button d-flex align-center gap-8px feature-btn option absolute"
             onClick={handleWatchLaterClick}>
             <span class="material-icons-outlined">
               {watchlater ? "task_alt" : "watch_later"}
             </span>
         </button>
+          </div>
+        {/* <button
+            class="button d-flex align-center gap-8px feature-btn option absolute"
+            onClick={handleWatchLaterClick}>
+            <span class="material-icons-outlined">
+              {watchlater ? "task_alt" : "watch_later"}
+            </span>
+        </button> */}
     </div>
   );
 };

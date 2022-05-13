@@ -60,7 +60,6 @@
     Best Gaming laptop
     Best laptop for video editing
     Best laptop under 50000 rupees etc
-    
     In this video i talked about 5 tips to buy new laptop or you can say 5 mistakes you are doing while buying new laptop.`
   },
   {
@@ -132,6 +131,167 @@
     category: "laptop",
     description:
       "Ever since COVID, we have been using our laptops a lot more, and in this video, we show you 10 useful laptop gadgets that will make your life a whole lot easier. "
-  }
+  },
+  {
+    _id: "ART5DJD6FaU",
+    image: "https://img.youtube.com/vi/ART5DJD6FaU/maxresdefault.jpg",
+    length: "10.20",
+    icon:
+      "https://yt3.ggpht.com/ytc/AKedOLTcBca1zPZe5IRQwMSMQR7_0FWhVESTt5Aw1S0atQ=s48-c-k-c0x00ffffff-no-rj",
+    title: "5 Smart Wearable Technology You Must Have",
+    channelName: "Gadget Inspiration",
+    views: "1.8K",
+    isTrending: true,
+    category: "wearables",
+    description:
+      "5 Smart Wearable Technology You Must Have"
+  },
+  {
+    _id: "78DtfUXydv4",
+    image: "https://img.youtube.com/vi/78DtfUXydv4/maxresdefault.jpg",
+    length: "5.55",
+    icon:
+      "https://yt3.ggpht.com/ytc/AKedOLT1mtYV-xdNSt6oRm3DlE6S6hVN5KEKB6GBFygE=s48-c-k-c0x00ffffff-no-rj",
+    title: "Latest Wearable Tech 2021 | Wearable Technology",
+    channelName: "Product District",
+    views: "1.8K",
+    isTrending: true,
+    category: "wearables",
+    description: "One area in tech innovation that has been gaining more attention today is the wearable technology. These technology products are smartly integrated in existing wearable items that we use every day – which is why the wearable technology is so powerful."
+  },
+  {
+    _id: "vCvwPAZx_o0",
+    image: "https://img.youtube.com/vi/vCvwPAZx_o0/maxresdefault.jpg",
+    length: "7.42",
+    icon:
+      "https://yt3.ggpht.com/ytc/AKedOLRrHcrqMj019-QQ392PvgAyrlRNxZBGyVFmSMbeMQ=s48-c-k-c0x00ffffff-no-rj",
+    title: "The Future of Tech is Wearables",
+    channelName: "Concerning Reality",
+    views: "14.9K",
+    isTrending: true,
+    category: "wearables",
+    description: "Tech companies are trying to take over the world. I’m not just being alarmist, that’s the current business model of tech companies as they try to be the one stop shop for your life. Don’t believe me? Let’s take a closer look at just what tech companies have been up to."
+  },
+  {
+    _id: "gA3mM2w2hRg",
+    image: "https://img.youtube.com/vi/gA3mM2w2hRg/maxresdefault.jpg",
+    length: "12:35",
+    icon:
+      "https://yt3.ggpht.com/EYXEN3n0cfYgs_zDqlSVk8JY1y6gLrzfmdV17uce1zkMEKRoH7VlLwaptPBh6zBk_ie-c7Qw=s68-c-k-c0x00ffffff-no-rj",
+    title: "Smartphone Buying Guide 2021 ⚡ Find The Perfect Smartphone For You",
+    channelName: "Trakin Tech",
+    views: "2.1M",
+    isTrending: true,
+    category: "phone",
+    description:
+      "Doston Har dusre teesre din ek smartphone launch ho raha hai aur jab aap smartphone lete ho toh 15-20 dino ke baad aise lagtaa hai ki thodi der ruk jaana chahiye tha"
+  },
+  {
+    _id: "XADAYYCnp4w",
+    image: "https://img.youtube.com/vi/XADAYYCnp4w/maxresdefault.jpg",
+    length: "12.01",
+    icon:
+      "https://yt3.ggpht.com/EYXEN3n0cfYgs_zDqlSVk8JY1y6gLrzfmdV17uce1zkMEKRoH7VlLwaptPBh6zBk_ie-c7Qw=s68-c-k-c0x00ffffff-no-rj",
+    title: "Detailed Laptop Buying Guide 2022⚡Don't Miss This Video",
+    channelName: "Trakin Tech",
+    views: "492K",
+    isTrending: true,
+    category: "laptop",
+    description: "Friends, welcome to yet another amazing buying guide video. In today's video we are discussing which laptop should you buy and how you can get the best bang for you buck, So do watch this video till the end to know everything."
+  },
+  {
+    _id: "u8tnYt30L-A",
+    image: "https://img.youtube.com/vi/u8tnYt30L-A/maxresdefault.jpg",
+    length: "13.54",
+    icon:
+      "https://yt3.ggpht.com/ytc/AKedOLQGnY6McntoY-eWaRDI047FWFqj7pVlw2nBfkwz7w=s48-c-k-c0x00ffffff-no-rj",
+    title: "How wearable technology will change our lives | Gonzalo Tudela | TEDxSFU",
+    channelName: "TEDx Talks",
+    views: "64K",
+    isTrending: true,
+    category: "wearables",
+    description: "This talk was given at a local TEDx event, produced independently of the TED Conferences. Gonzalo is the CEO & Co-Founder of Vandrico, a technology company that enables wearable technology in the workplace. Gonzalo believes that wearable technology is something that will change our lives in the present, and in the coming future."
+  },
+  {
+    _id: "DppJZQJ9n0g",
+    image: "https://img.youtube.com/vi/DppJZQJ9n0g/maxresdefault.jpg",
+    length: "10.22",
+    icon:
+      "https://yt3.ggpht.com/ytc/AKedOLSoumTYdT8sN5SCdf3sU5O4kC7qjJcHeguRvZ6Erg=s48-c-k-c0x00ffffff-no-rj",
+    title: `Top 10+ Upcoming Mobile Phones May 2022 🇮🇳 | Crazy Flagship Killer "BUDGET ME"`,
+    channelName: "Gizmo Gyan",
+    views: "50K",
+    isTrending: true,
+    category: "phone",
+    description:
+      "Dosto aaj ki video me maine aapko kuch smartphones bataye hai jo aapko May 2022 me dekhne ko mil jayenge to aapko mast wale flagship killer milenge wo bhi kam price pe :)"
+  },
+  {
+    _id: "WN28MKAK-fA",
+    image: "https://img.youtube.com/vi/WN28MKAK-fA/maxresdefault.jpg",
+    length: "8.58",
+    icon:
+      "https://yt3.ggpht.com/ytc/AKedOLQGnY6McntoY-eWaRDI047FWFqj7pVlw2nBfkwz7w=s48-c-k-c0x00ffffff-no-rj",
+    title: "Wearable Technologies: The New Normal in Healthcare | Noushin Nasiri | TEDxBlighStreet",
+    channelName: "TEDx Talks",
+    views: "8.7K",
+    isTrending: false,
+    category: "wearables",
+    description: "What if your wearable device could save your life? Nanotechnologist Dr Noushin Nasiri asks what wearable technology can do for future of healthcare, by empowering us with the ability to monitor our own wellness before we develop illness, and to help our healthcare systems become more proactive and predictive."
+  },
+  {
+    _id: "1mS99Gmw1sI",
+    image: "https://img.youtube.com/vi/1mS99Gmw1sI/maxresdefault.jpg",
+    length: "11.58",
+    icon:
+      "https://yt3.ggpht.com/ytc/AKedOLSLzBlLalLFEXgvGHr6f9yBm9Y8PrJMXZC_hxTTlQ=s68-c-k-c0x00ffffff-no-rj",
+    title: "This Laptop Has Special Gaming Features",
+    channelName: "Tech Burner",
+    views: "1.9M",
+    isTrending: false,
+    category: "laptop",
+    description: `OMEN 16" with Intel Core i7 Processor ka gaming Laptop aagaya hai Aur iske mazedar gaming  features try kar liye jaye`
+  },
+  {
+    _id: "tC6FtVKXNhc",
+    image: "https://img.youtube.com/vi/tC6FtVKXNhc/maxresdefault.jpg",
+    length: "10.29",
+    icon:
+      "https://yt3.ggpht.com/oSawoFfsLNYpRbz0_8vCldPBwNcbWeedY5FFMMqPyymExZWFc7x_xq1P_AoVBU9via_A7d61iiE=s176-c-k-c0x00ffffff-no-rj",
+    title: "Best Upcoming Laptops in India 2022 😍",
+    channelName: "PC-Talk with Vikram",
+    views: "35K",
+    isTrending: false,
+    category: "laptop",
+    description: "Hello Everybody, Here I am with another list of best upcoming laptops in India 2022. Watching this full will be very helpful if you are planning to a buy new laptop in 2022. "
+  },
+  {
+    _id: "zmvAHh-sKws",
+    image: "https://img.youtube.com/vi/zmvAHh-sKws/maxresdefault.jpg",
+    length: "9.43",
+    icon:
+      "https://yt3.ggpht.com/gBZ6aUsFE-je2mVwL09-w288a265LtupuqoePjttH9UC5vcU8oOO73CFtkI2esBlQbqMVsLZs9o=s88-c-k-c0x00ffffff-no-rj",
+    title: "POLED Display is Good or NOT *AMOLED vs OLED vs POLED Display*",
+    channelName: "Gyan Therapy",
+    views: "321K",
+    isTrending: true,
+    category: "phone",
+    description: `This video explained about about POLED ov OLED Display OLED vs AMOLED Display Amoled vs Super Amoled Display
+    LG vs Samsung Display
+    Thanks for watching`
+  },
+  {
+    _id: "vRs-FrmFhos",
+    image: "https://img.youtube.com/vi/vRs-FrmFhos/maxresdefault.jpg",
+    length: "8.02",
+    icon:
+      "https://yt3.ggpht.com/gHm1T5I1vA-ZB9Nwh7MQPMlZ8o63Qmt6b5PQZKs7-eeo85dtkmskwOyQ7_Jbf2Y6bzmcDabsIg=s48-c-k-c0x00ffffff-no-rj",
+    title: "The hotly anticipated laptops coming in 2022",
+    channelName: "CNET",
+    views: "34K",
+    isTrending: false,
+    category: "laptop",
+    description: "Dan Ackerman lists some of the trends and laptops he can't wait for this year."
+  },
 ];
 
