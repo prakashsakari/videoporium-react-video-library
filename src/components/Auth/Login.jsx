@@ -25,7 +25,7 @@ export const AuthLogin = () => {
     }
     const handleLoginClick = (event) => {
         event.preventDefault();
-        userLogin(credentials.email, credentials.password)
+        userLogin(credentials.email, credentials.password, setAlert)
         credentialsDispatch({type: "CLEAR_LOGIN_CREDENTIALS"})
     }
 
