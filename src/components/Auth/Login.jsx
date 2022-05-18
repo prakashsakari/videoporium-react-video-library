@@ -66,13 +66,7 @@ export const AuthLogin = () => {
                 </div>
 
                 <div className="remember">
-                    <input type="checkbox" className="check-box"/>
-                    <label className="padding-all-8 label-remember">Remember me</label>
-                    <button className="button btn-link-primary cursor mg-left">
-                        <Link className="link-primary" to="/login">
-                            Forgot your Password?
-                        </Link>
-                    </button>
+                    <label className="padding-all-8 label-remember d-flex align-center gap-8px"><input type="checkbox" className="check-box"/>Remember me</label>
                 </div>
                 <div className="cta">
                     <button
@@ -81,7 +75,7 @@ export const AuthLogin = () => {
                         Login
                     </button>
                     <button
-                        className="login-btn button btn-primary cursor btn-margin sign-up-btn"
+                        className="login-btn button btn-outline-primary btn-margin sign-up-btn"
                         onClick={handleTestCredentialsLogin}>
                         Login with Test Credentials
                     </button>
@@ -94,6 +88,8 @@ export const AuthLogin = () => {
                             </span>
                         </Link>
                     </div>
+                    
+
                 </div>
             </div>
         </div>

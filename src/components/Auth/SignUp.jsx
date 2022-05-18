@@ -167,9 +167,8 @@ export const AuthSignUp = () => {
             )}
 
             <div className="remember">
-            <input type="checkbox" className="check-box" />
-            <label className="padding-all-8 label-remember">
-                I accept all Terms & Conditions
+            <label className="padding-all-8 label-remember d-flex align-center gap-8px">
+            <input type="checkbox" className="check-box" />  I accept all Terms & Conditions
             </label>
             </div>
 
