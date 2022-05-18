@@ -8,23 +8,33 @@
 .login-auth {
     width: 33rem;
     background-color: var(--card-background);
-    padding: 2rem 2rem 0 2rem;
+    padding: 0rem 2rem 0 2rem;
+
 }
 
 .auth-title {
     margin: 1rem 0;
     text-align: center;
+    color: var(--primary-color);
 }
 
 .form-input {
     width: 26rem;
     margin: 4px 0;
     font-size: 1rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    color: var(--primary-color);;
+}
+
+.form-input:focus {
+    outline: 1px solid var(--primary-color);;
 }
 
 .form-label {
     padding: 0;
     text-decoration: none;
+    color: var(--primary-color);
 }
 
 .form-container {
@@ -33,6 +43,7 @@
 
 .label-remember {
     font-size: 1.25rem;
+    color: var(--primary-color);
 }
 
 .login-btn {
@@ -46,6 +57,7 @@
 .new-account {
     font-weight: 700;
     font-size: 1.5rem;
+    color: var(--primary-color);
 }
 
 .flex-row {
@@ -83,4 +95,15 @@
     cursor: none;
     background-color: var(--secondary-color);
     color: var(--text-color-primary);
+}
+
+.btn-outline-primary:hover {
+    color: var(--background-color);
+    background-color: var(--primary-color);
+    cursor: pointer;
+}
+
+.check-box {
+    width: 18px;
+    height: 18px;
 }
