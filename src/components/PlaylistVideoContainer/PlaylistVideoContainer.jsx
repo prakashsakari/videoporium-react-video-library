@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { usePlaylist } from "../../context"
-import { Navbar, SideBar, HorizontalVideoCard } from "../../components";
+import { usePlaylist, useAlert } from "../../context"
+import { Navbar, SideBar, HorizontalVideoCard, Alert } from "../../components";
 import { getPlaylist } from "../../utils";
 import { deletePlayList } from "../../playlistServices";
 
@@ -11,9 +11,10 @@ export const PlaylistVideoContainer = () => {
     const {id: playlistId} = useParams();
     const playlist = getPlaylist(playlistId, playlists);
     const navigate = useNavigate();
+    const {alert, setAlert} = useAlert()
 
     const handleClearPlayList = async () => {
-        const deletedPlaylist = await deletePlayList(playlist._id);
+        const deletedPlaylist = await deletePlayList(playlist._id, setAlert);
         playlistDispatch({
             type: "DELETE_PLAYLIST",
             payload: playlist._id
@@ -23,6 +24,7 @@ export const PlaylistVideoContainer = () => {
 
     return (
         <Fragment>
+            {alert.open && <Alert />}
             <Navbar />
             <div class="d-flex gap mg">
                 <SideBar />

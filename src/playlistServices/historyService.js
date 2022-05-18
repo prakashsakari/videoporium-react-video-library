@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const addToHistory = async (video) => {
+const addToHistory = async (video, setAlert) => {
     try{
         const {data: {history}} = await axios.post("/api/user/history", {video}, 
         {
@@ -9,33 +9,55 @@ const addToHistory = async (video) => {
         localStorage.setItem("history", JSON.stringify(history))
         return history
     }catch(err){
-        console.log(err)
+        setAlert({
+            open: true,
+            message: "Something went wrong",
+            type: "error"
+        })
     }
 }
 
-const removeFromHistory = async (video) => {
+const removeFromHistory = async (video, setAlert) => {
     try{
         const {data: {history}} = await axios.delete(`/api/user/history/${video._id}`, 
         {
         headers: { authorization: localStorage.getItem("token") },
         })
         localStorage.setItem("history", JSON.stringify(history))
+        setAlert({
+            open: true,
+            message: "Video Removed Successfully",
+            type: "success"
+        })
         return history
     }catch(err){
-        console.log(err)
+        setAlert({
+            open: true,
+            message: "Something went wrong",
+            type: "error"
+        })
     }
 }
 
-const removeAllFromHistory = async () => {
+const removeAllFromHistory = async (setAlert) => {
     try{
         const {data: {history}} = await axios.delete("/api/user/history/all", 
         {
         headers: { authorization: localStorage.getItem("token") },
         })
         localStorage.setItem("history", JSON.stringify(history));
+        setAlert({
+        open: true,
+        message: "All Videos Removed Successfully",
+        type: "success"
+      })
         return history
     }catch(err){
-        console.log(err)
+        setAlert({
+            open: true,
+            message: "Something went wrong",
+            type: "error"
+        })
     }
 }
 

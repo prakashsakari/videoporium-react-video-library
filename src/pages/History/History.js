@@ -1,23 +1,25 @@
 import { useNavigate } from "react-router-dom";
-
-import { Navbar, SideBar, HorizontalVideoCard } from "../../components";
-import { usePlaylist } from "../../context";
+import { Fragment } from "react";
+import { Navbar, SideBar, HorizontalVideoCard, Alert } from "../../components";
+import { usePlaylist, useAlert } from "../../context";
 import { removeAllFromHistory } from "../../playlistServices";
 import "../Playlist.css"
 
 export const History = () => {
   const { history, playlistDispatch } = usePlaylist();
   const navigate = useNavigate();
+  const { alert, setAlert } = useAlert();
 
   const handleClearAllClick = async () => {
-    const clearedVideo = await removeAllFromHistory();
+    const clearedVideo = await removeAllFromHistory(setAlert);
     playlistDispatch({
       type: "CLEAR_HISTORY"
   });
   }
   
   return (
-    <>
+    <Fragment>
+      {alert.open && <Alert />}
       <Navbar />
       <div class="d-flex gap mg">
         <SideBar />
@@ -48,6 +50,6 @@ export const History = () => {
           )}
         </main>
       </div>
-    </>
+    </Fragment>
   );
 };

@@ -1,7 +1,7 @@
 import axios from "axios";
-import {useState, useEffect} from "react";
-import { useCategory } from "../../context";
-import { Navbar, Footer, SideBar, VideoCard, Category, Loader } from "../../components";
+import {useState, useEffect, Fragment} from "react";
+import { useCategory, useAlert } from "../../context";
+import { Navbar, Footer, SideBar, VideoCard, Category, Loader, Alert } from "../../components";
 import { getWearables, getPhones, getLaptops, getTrending, getVideoBySearch } from "../../utils";
 import "./Home.css";
 import "../Playlist.css"
@@ -9,6 +9,7 @@ import "../Playlist.css"
 export const Home = () => {
 
     const { vidcategory, tag } = useCategory();
+    const { alert } = useAlert();
 
     const [categories, setCategories] = useState([]);
     const [videos, setVideos] = useState([]);
@@ -54,9 +55,10 @@ export const Home = () => {
 
     return (
         
-        <>
+        <Fragment>
         {loading ?  <Loader />  : 
-        <>
+        <Fragment>
+            {alert.open && <Alert />}
             <Navbar />
             <div class="d-flex gap mg">
                 {!error ? (
@@ -93,9 +95,9 @@ export const Home = () => {
                 
             </div>
             {filteredVideos.length > 0 && <Footer />}
-        </>
+        </Fragment>
             }
-        </>
+        </Fragment>
             
     );
 };
