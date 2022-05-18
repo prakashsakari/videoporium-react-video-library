@@ -1,11 +1,12 @@
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import "./Auth.css"
-import {useAuth} from "../../context";
-import {useState} from "react";
+import { useAuth, useAlert } from "../../context";
 
 export const AuthLogin = () => {
     const [passwordtype, setPasswordType] = useState("password");
     const {userLogin, credentials, credentialsDispatch} = useAuth();
+    const { setAlert } = useAlert();
 
     const handleEmailInputChange = (event) => {
         credentialsDispatch({type: "EMAIL", payload: event.target.value})
@@ -20,9 +21,8 @@ export const AuthLogin = () => {
     }
 
     const handleTestCredentialsLogin = () => {
-        userLogin("adarshbalika@gmail.com", "adarshBalika123")
+        userLogin("prakashsakari@gmail.com", "prakashSakari123", setAlert)
     }
-
     const handleLoginClick = (event) => {
         event.preventDefault();
         userLogin(credentials.email, credentials.password)
@@ -87,8 +87,6 @@ export const AuthLogin = () => {
                             </span>
                         </Link>
                     </div>
-                    
-
                 </div>
             </div>
         </div>

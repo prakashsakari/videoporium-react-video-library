@@ -1,9 +1,11 @@
 import logo from "../../assets/logo.png"
 import "./Navbar.css";
-import { useCategory, useAuth, usePlaylist } from "../../context";
+import { useCategory, useAuth, usePlaylist, useAlert } from "../../context";
 export const Navbar = () => {
 
   const {categoryDispatch} = useCategory();
+
+  const {setAlert} = useAlert();
 
   const { logOutHandler, eToken, euser
   } = useAuth();
@@ -11,7 +13,7 @@ export const Navbar = () => {
   const { playlistDispatch} = usePlaylist();
 
   const handleLogoutClick = () => {
-    logOutHandler();
+    logOutHandler(setAlert);
     playlistDispatch({
       type: "CLEAR_ALL"
   })
