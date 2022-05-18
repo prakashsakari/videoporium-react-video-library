@@ -1,6 +1,5 @@
 import {useNavigate} from "react-router-dom";
-
-import { usePlaylist, useAuth } from "../../context";
+import { usePlaylist, useAuth, useAlert } from "../../context";
 import {isInWatchlater} from "../../utils";
 import {addToWatchLater, removeFromWatchLater, addToHistory} from "../../playlistServices";
 import "./VideoCard.css";
@@ -11,17 +10,18 @@ export const VideoCard = ({ video }) => {
   const watchlater = isInWatchlater(watchLater, video._id);
   const navigate = useNavigate();
   const {eToken} = useAuth();
+  const {alert, setAlert} = useAlert();
 
   const handleWatchLaterClick = async () => {
     if (eToken){
       if (!watchlater){
-        const watchlaterVideo = await addToWatchLater(video);
+        const watchlaterVideo = await addToWatchLater(video, setAlert);
         playlistDispatch({
           type: "WATCH_LATER",
           payload: video
         });
       }else{
-        const removedwatchlaterVideo = await removeFromWatchLater(video);
+        const removedwatchlaterVideo = await removeFromWatchLater(video, setAlert);
         playlistDispatch({
           type: "REMOVE_FROM_WL",
           payload: video
@@ -68,13 +68,6 @@ export const VideoCard = ({ video }) => {
             </span>
         </button>
           </div>
-        {/* <button
-            class="button d-flex align-center gap-8px feature-btn option absolute"
-            onClick={handleWatchLaterClick}>
-            <span class="material-icons-outlined">
-              {watchlater ? "task_alt" : "watch_later"}
-            </span>
-        </button> */}
     </div>
   );
 };

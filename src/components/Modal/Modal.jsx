@@ -1,13 +1,15 @@
+import { Fragment } from "react";
 import "./Modal.css";
-import { useModal } from "../../context";
-import { usePlaylist } from "../../context";
+import { useModal, usePlaylist, useAlert } from "../../context";
 import { createPlaylist, addToPlaylist, removeFromPlaylist, addToWatchLater, removeFromWatchLater } from "../../playlistServices";
 import { isInWatchlater, isVideoInPlaylist} from "../../utils";
+import { Alert } from "../Alert/Alert";
 
 
 export const Modal = ({singleVideo}) => {
   const { isModalOpen, isFormOpen, playlistName, modalDispatch } = useModal();
   const {watchLater, playlists, playlistDispatch} = usePlaylist();
+  const {alert, setAlert} = useAlert();
 
   const watchlater = isInWatchlater(watchLater, singleVideo._id);
 
@@ -32,7 +34,7 @@ export const Modal = ({singleVideo}) => {
 
   const handleFormSubmit = async (event) => {
       event.preventDefault();
-      const playlists =  await createPlaylist(playlistName);
+      const playlists =  await createPlaylist(playlistName, setAlert);
       playlistDispatch({
           type: "SET_PLAYLIST",
           payload: playlists
@@ -48,13 +50,13 @@ export const Modal = ({singleVideo}) => {
 
   const handleWatchLaterChange = async (event) => {
     if (event.target.checked){
-      const watchlaterVideo = await addToWatchLater(singleVideo);
+      const watchlaterVideo = await addToWatchLater(singleVideo, setAlert);
         playlistDispatch({
           type: "WATCH_LATER",
           payload: singleVideo
         });
     }else{
-      const removedwatchlaterVideo = await removeFromWatchLater(singleVideo);
+      const removedwatchlaterVideo = await removeFromWatchLater(singleVideo, setAlert);
         playlistDispatch({
           type: "REMOVE_FROM_WL",
           payload: singleVideo
@@ -64,7 +66,7 @@ export const Modal = ({singleVideo}) => {
 
   const handlePlaylistChange = async (event, playlistId) => {
     if (event.target.checked){
-      const videoAddedToPlaylist = await addToPlaylist(playlistId, singleVideo);
+      const videoAddedToPlaylist = await addToPlaylist(playlistId, singleVideo, setAlert);
       playlistDispatch({
         type: "ADD_TO_PLAYLIST",
         payload:{
@@ -72,7 +74,7 @@ export const Modal = ({singleVideo}) => {
         }
       })
     }else{
-      const videoRemovedFromPlaylist = await removeFromPlaylist(playlistId, singleVideo);
+      const videoRemovedFromPlaylist = await removeFromPlaylist(playlistId, singleVideo, setAlert);
       playlistDispatch({
         type: "REMOVE_FROM_PLAYLIST",
         payload:{
@@ -83,6 +85,8 @@ export const Modal = ({singleVideo}) => {
   }
 
   return (
+    <Fragment>
+      {alert.open && <Alert />}
     <div
       class={
         !isModalOpen
@@ -144,5 +148,6 @@ export const Modal = ({singleVideo}) => {
         </div>
       </div>
     </div>
+    </Fragment>
   );
 };

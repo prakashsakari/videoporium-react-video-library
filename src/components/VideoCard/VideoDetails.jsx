@@ -1,11 +1,12 @@
 import { useNavigate, useLocation } from "react-router-dom";
 
-import { usePlaylist, useAuth } from "../../context/";
+import { usePlaylist, useAuth, useAlert } from "../../context/";
 import { isLiked, isInWatchlater } from "../../utils";
 import { Modal } from "../Modal/Modal";
 import { useModal } from "../../context";
 import { addToLikedVideo, removeFromLikedVideo, addToWatchLater, removeFromWatchLater } from "../../playlistServices";
 import "./VideoDetails.css"
+import { Alert } from "../Alert/Alert";
 
 export const VideoDetails = ({_id, title, channelName, views, description, singleVideo}) => {
 
@@ -17,6 +18,8 @@ export const VideoDetails = ({_id, title, channelName, views, description, singl
 
   const {eToken} = useAuth();
 
+  const {alert, setAlert} =  useAlert();
+
   const navigate = useNavigate();
 
   const {pathname} = useLocation();
@@ -24,14 +27,14 @@ export const VideoDetails = ({_id, title, channelName, views, description, singl
   const handleLikeClick = async () => {
     if (eToken){
       if (!liked){
-        const likes = await addToLikedVideo(singleVideo);
+        const likes = await addToLikedVideo(singleVideo, setAlert);
         likes && likes.map(video => playlistDispatch({
           type: "LIKED",
           payload: video
         }))
         
       }else{
-        const removedLikes = await removeFromLikedVideo(singleVideo);
+        const removedLikes = await removeFromLikedVideo(singleVideo, setAlert);
         playlistDispatch({
           type: "REMOVE_FROM_LIKE",
           payload: singleVideo
@@ -47,13 +50,13 @@ export const VideoDetails = ({_id, title, channelName, views, description, singl
   const handleWatchLaterClick = async () => {
     if (eToken){
       if (!watchlater){
-        const watchlaterVideo = await addToWatchLater(singleVideo);
+        const watchlaterVideo = await addToWatchLater(singleVideo, setAlert);
         playlistDispatch({
           type: "WATCH_LATER",
           payload: singleVideo
         });
       }else{
-        const removedwatchlaterVideo = await removeFromWatchLater(singleVideo);
+        const removedwatchlaterVideo = await removeFromWatchLater(singleVideo, setAlert);
         playlistDispatch({
           type: "REMOVE_FROM_WL",
           payload: singleVideo
@@ -82,6 +85,7 @@ export const VideoDetails = ({_id, title, channelName, views, description, singl
 
   return (
       <div class="single-video-container">
+        {alert.open && <Alert />}
         <div className="relative">
           <div class="about-creator col-flex-util gap-12px">
               <h3 class="heading-3">{title}</h3>

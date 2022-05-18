@@ -1,14 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import { Navbar, SideBar, HorizontalVideoCard } from "../../components";
-import { usePlaylist } from "../../context";
+import { Fragment } from "react";
+import { Navbar, SideBar, HorizontalVideoCard, Alert } from "../../components";
+import { usePlaylist, useAlert } from "../../context";
 import "../Playlist.css";
 
 export const WatchLater = () => {
   const { watchLater } = usePlaylist();
   const navigate = useNavigate();
-  
+  const { alert } = useAlert();
+
   return (
-        <>
+        <Fragment>
+        {alert.open && <Alert />}
         <Navbar />
         <div class="d-flex gap mg">
             <SideBar />
@@ -31,6 +34,6 @@ export const WatchLater = () => {
                 )}
             </main>
         </div>
-        </>
+        </Fragment>
     );
 };

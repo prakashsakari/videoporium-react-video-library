@@ -1,14 +1,17 @@
 import { useNavigate } from "react-router-dom";
-import { Navbar, HorizontalVideoCard, SideBar } from "../../components";
-import { usePlaylist } from "../../context";
+import { Fragment } from "react";
+import { Navbar, HorizontalVideoCard, SideBar, Alert } from "../../components";
+import { usePlaylist, useAlert } from "../../context";
 import "../Playlist.css"
 
 export const Liked = () => {
   const { likedVideos } = usePlaylist();
+  const { alert } = useAlert();
 
   const navigate = useNavigate();
   return (
-    <>
+    <Fragment>
+      {alert.open && <Alert />}
       <Navbar />
       <div class="d-flex gap mg">
         <SideBar />
@@ -31,6 +34,6 @@ export const Liked = () => {
           )}
         </main>
       </div>
-    </>
+    </Fragment>
   );
 };
