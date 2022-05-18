@@ -1,0 +1,20 @@
+.error-page {
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+  
+.error-title {
+    font-size: 10rem;
+    color: var(--primary-color);
+    margin-bottom: 4rem;
+}
+  
+.error-msg {
+    color: var(--text-color-primary);
+    text-align: center;
+    width: 50%;
+}
+  

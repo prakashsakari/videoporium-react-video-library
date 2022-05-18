@@ -6,3 +6,4 @@ export { History } from "./History/History";
 export { Login } from "./Authentication/Login"
 export { SignUp } from "./Authentication/Signup";
 export { Playlists } from "./Playlists/Playlists";
+export { Error } from "./404/404";
