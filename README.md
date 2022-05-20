@@ -77,7 +77,18 @@ Start the server
   npm start
 ```
 
-## GIF
+## Screenshots
+
+![img 1](https://user-images.githubusercontent.com/80476561/169443373-9b091887-6352-4dd7-aca1-2e465708ea62.png)
+![playlist](https://user-images.githubusercontent.com/80476561/169443384-4bb21f5f-0143-4a28-8e5f-3bbcdc02661b.png)
+![playlist1](https://user-images.githubusercontent.com/80476561/169443396-cf3ac2fe-9fd9-4255-beed-7ac6a703bf20.png)
+![watchlater](https://user-images.githubusercontent.com/80476561/169443400-0166e650-9ea6-4376-ad3f-95ddc216eee0.png)
+
+
+## Demo 
+
+https://user-images.githubusercontent.com/80476561/169444790-509ad50e-af19-44ca-9698-1b505dc3b9e8.mp4
+
 
 
 
