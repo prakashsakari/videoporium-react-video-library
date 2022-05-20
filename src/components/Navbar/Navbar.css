@@ -23,7 +23,13 @@
     width: 30rem;
     padding-left: 2rem;
     font-size: 1rem;
-    border: 1px solid var(--accent-color);
+    border: none;
+    border-bottom: 1px solid var(--primary-color);
+    background-color: transparent;
+}
+
+.search-box:focus{
+    outline: none
 }
   
 .search-icon {
@@ -39,9 +45,7 @@
     margin-left: 0;
 }
 
-.search-box:focus{
-    outline: 1px solid var(--accent-color);
-}
+
 
 .auth-btn{
     background-color: transparent;

@@ -38,15 +38,13 @@ export const Navbar = () => {
             type: "SEARCH",
             payload: e.target.value
           })}
-          className="search-box padding-all-8 border-radius-4"
+          className="search-box padding-all-8"
           type="text"
           placeholder="Search"
         />
-        <img
-          src="https://therightfit.netlify.app/assets/outline_search_black_24dp.png"
-          alt="Search"
-          className="search-icon absolute left-0 top-0"
-        />
+        <span class="search-icon material-icons-outlined absolute">
+          search
+        </span>
       </div>
       <nav class="navigation">
         <ul class="list-non-bullet d-flex align-center gap">
