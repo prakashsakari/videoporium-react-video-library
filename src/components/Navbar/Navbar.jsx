@@ -33,7 +33,7 @@ export const Navbar = ({route}) => {
           </a>
         </h1>
       </div>
-      {route !== "login" && route !== "signup" && <div className="search-box-container relative">
+      {route !== "login" && route !== "signup" && route !== "videoDetails" && <div className="search-box-container relative">
         <input
         onChange={(e) =>
           categoryDispatch({
