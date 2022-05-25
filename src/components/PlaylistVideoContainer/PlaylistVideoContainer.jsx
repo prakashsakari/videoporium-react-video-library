@@ -14,8 +14,6 @@ export const PlaylistVideoContainer = () => {
     const { tag } = useCategory();
     const {alert, setAlert} = useAlert()
 
-    const filteredVideos = getVideoBySearch(playlist.videos, tag);
-
     const handleClearPlayList = async () => {
         const deletedPlaylist = await deletePlayList(playlist._id, setAlert);
         playlistDispatch({
@@ -24,6 +22,8 @@ export const PlaylistVideoContainer = () => {
         })
         navigate("/playlist");
     }
+
+    const filteredVideos = getVideoBySearch(playlist?.videos, tag);
 
     return (
         <Fragment>
@@ -44,7 +44,7 @@ export const PlaylistVideoContainer = () => {
                 {
                     filteredVideos && filteredVideos.length > 0 ? (
                         
-                        filteredVideos.map((video) => <HorizontalVideoCard video={video} playlistId={playlist._id} key={video._id} />)) : playlist.videos.length < 1 ? (
+                        filteredVideos.map((video) => <HorizontalVideoCard video={video} playlistId={playlist._id} key={video._id} />)) : playlist?.videos?.length < 1 ? (
                         <div className="notify-message">
                             <h3 className="heading-3">
                                 You have not added any video yet.{" "}
