@@ -5,6 +5,6 @@ export { getTrending } from "./trending";
 export { getPhones } from "./phone";
 export { isInWatchlater } from "./watchlaterutil";
 export { isLiked } from "./likedutil";
-export { getVideoBySearch } from "./search";
+export { getVideoBySearch, getPlaylistBySearch } from "./search";
 export { isVideoInPlaylist } from "./isVideoInPlaylist";
 export { getPlaylist } from "./getPlaylist";

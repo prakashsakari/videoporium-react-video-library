@@ -1,13 +1,17 @@
 import { Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import { Navbar, SideBar, Alert} from "../../components";
-import { usePlaylist, useAlert } from "../../context";
+import { usePlaylist, useAlert, useCategory } from "../../context";
+import { getPlaylistBySearch } from "../../utils";
 import "../Playlist.css";
 
 export const Playlists = () => {
     const {playlists, watchLater}  = usePlaylist();
     const navigate = useNavigate();
     const {alert} = useAlert();
+    const { tag } = useCategory();
+
+    const filteredPlaylist = getPlaylistBySearch(playlists, tag);
 
     return (
         <Fragment>
@@ -22,7 +26,7 @@ export const Playlists = () => {
                             <h3 className="heading-3">Watch Later - {watchLater.length} videos</h3>
                         </div>
                     {
-                        playlists && playlists.map(playlist => {
+                        filteredPlaylist && filteredPlaylist.map(playlist => {
                             return (
                                 <div className="d-flex align-center shadow playlist-box" onClick={() => navigate(`/playlist/${playlist._id}`)}>
                                     <h3 className="heading-3">{playlist.title} - {playlist.videos.length} videos</h3>

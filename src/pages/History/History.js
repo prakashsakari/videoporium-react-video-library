@@ -1,14 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { Fragment } from "react";
 import { Navbar, SideBar, HorizontalVideoCard, Alert } from "../../components";
-import { usePlaylist, useAlert } from "../../context";
+import { usePlaylist, useAlert, useCategory } from "../../context";
 import { removeAllFromHistory } from "../../playlistServices";
+import { getVideoBySearch } from "../../utils";
 import "../Playlist.css"
 
 export const History = () => {
   const { history, playlistDispatch } = usePlaylist();
   const navigate = useNavigate();
   const { alert, setAlert } = useAlert();
+  const { tag } = useCategory();
+
+  const filteredVideos = getVideoBySearch(history, tag);
 
   const handleClearAllClick = async () => {
     const clearedVideo = await removeAllFromHistory(setAlert);
@@ -33,9 +37,9 @@ export const History = () => {
               Clear All <span class="material-icons-outlined">clear_all</span>{" "}
             </button>
           </div>
-          {history.length > 0 ? (
-            history?.map((video) => <HorizontalVideoCard video={video} />)
-          ) : (
+          {filteredVideos.length > 0 ? (
+            filteredVideos?.map((video) => <HorizontalVideoCard video={video} />)
+          ) : history.length < 1 ? (
             <div className="notify-message">
               <h3 className="heading-3">
                 You have not viewed any video yet.{" "}
@@ -47,7 +51,13 @@ export const History = () => {
                 </span>
               </h3>
             </div>
-          )}
+          ) : (<div className="notify-message">
+          <h3 className="heading-3">
+              No videos found. Try something else....{" "}
+              
+          </h3>
+          </div>)
+        }
         </main>
       </div>
     </Fragment>

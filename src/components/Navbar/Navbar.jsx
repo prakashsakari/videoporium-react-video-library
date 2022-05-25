@@ -1,7 +1,7 @@
 import logo from "../../assets/logo.png"
 import "./Navbar.css";
 import { useCategory, useAuth, usePlaylist, useAlert } from "../../context";
-export const Navbar = () => {
+export const Navbar = ({route}) => {
 
   const {categoryDispatch} = useCategory();
 
@@ -33,7 +33,7 @@ export const Navbar = () => {
           </a>
         </h1>
       </div>
-      <div className="search-box-container relative">
+      {route !== "login" && route !== "signup" && <div className="search-box-container relative">
         <input
         onChange={(e) =>
           categoryDispatch({
@@ -47,7 +47,9 @@ export const Navbar = () => {
         <span class="search-icon material-icons-outlined absolute">
           search
         </span>
-      </div>
+      </div>}
+      
+      
       <nav class="navigation">
         <ul class="list-non-bullet d-flex align-center gap">
         {eToken && euser.length > 0 ? (
