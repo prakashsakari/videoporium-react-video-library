@@ -1,5 +1,5 @@
 const getVideoBySearch = (video, tag) =>
-  video.filter(
+  video && video.length > 0 && video.filter(
     ({ title, channelName }) =>
       title.toLowerCase().includes(tag.toLowerCase()) ||
       channelName.toLowerCase().includes(tag.toLowerCase())
