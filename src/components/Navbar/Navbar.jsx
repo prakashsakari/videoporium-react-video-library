@@ -1,6 +1,8 @@
 import logo from "../../assets/logo.png"
 import "./Navbar.css";
 import { useCategory, useAuth, usePlaylist, useAlert } from "../../context";
+import { debounce } from "lodash";
+
 export const Navbar = ({route}) => {
 
   const {categoryDispatch} = useCategory();
@@ -19,6 +21,13 @@ export const Navbar = ({route}) => {
   })
   }
 
+  const handleSearch = debounce((e) => {
+    categoryDispatch({
+      type: "SEARCH",
+      payload: e.target.value
+    })
+  }, 500)
+
   return (
     <header class="heading d-flex align-center fixed top-0 left-0">
       <div class="heading-title-icon d-flex  align-center">
@@ -35,11 +44,7 @@ export const Navbar = ({route}) => {
       </div>
       {route !== "login" && route !== "signup" && route !== "videoDetails" && <div className="search-box-container relative">
         <input
-        onChange={(e) =>
-          categoryDispatch({
-            type: "SEARCH",
-            payload: e.target.value
-          })}
+        onChange={handleSearch}
           className="search-box padding-all-8"
           type="text"
           placeholder="Search"
