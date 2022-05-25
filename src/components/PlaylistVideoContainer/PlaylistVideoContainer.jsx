@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { usePlaylist, useAlert } from "../../context"
+import { usePlaylist, useAlert, useCategory } from "../../context"
 import { Navbar, SideBar, HorizontalVideoCard, Alert } from "../../components";
-import { getPlaylist } from "../../utils";
+import { getPlaylist, getVideoBySearch } from "../../utils";
 import { deletePlayList } from "../../playlistServices";
 
 export const PlaylistVideoContainer = () => {
@@ -11,7 +11,10 @@ export const PlaylistVideoContainer = () => {
     const {id: playlistId} = useParams();
     const playlist = getPlaylist(playlistId, playlists);
     const navigate = useNavigate();
+    const { tag } = useCategory();
     const {alert, setAlert} = useAlert()
+
+    const filteredVideos = getVideoBySearch(playlist.videos, tag);
 
     const handleClearPlayList = async () => {
         const deletedPlaylist = await deletePlayList(playlist._id, setAlert);
@@ -39,7 +42,9 @@ export const PlaylistVideoContainer = () => {
                 </div>
                 
                 {
-                    playlist && playlist.videos.length > 0 ? (playlist.videos.map((video) => <HorizontalVideoCard video={video} playlistId={playlist._id} key={video._id} />)) : (
+                    filteredVideos && filteredVideos.length > 0 ? (
+                        
+                        filteredVideos.map((video) => <HorizontalVideoCard video={video} playlistId={playlist._id} key={video._id} />)) : playlist.videos.length < 1 ? (
                         <div className="notify-message">
                             <h3 className="heading-3">
                                 You have not added any video yet.{" "}
@@ -51,7 +56,12 @@ export const PlaylistVideoContainer = () => {
                                 </span>
                             </h3>
                         </div>
-                    )
+                    ) : (<div className="notify-message">
+                    <h3 className="heading-3">
+                        No videos found. Try something else....{" "}
+                        
+                    </h3>
+                    </div>)
                 }
                 </main>
             </div>
