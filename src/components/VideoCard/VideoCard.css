@@ -4,6 +4,14 @@
     border: 1px solid var(--accent-color);
     border-radius: 4px;
 }
+
+.horizontaol-video-card {
+    padding: 8px;
+    border: 1px solid var(--accent-color);
+    border-radius: 4px;
+    width: 40vw;
+    margin-bottom: 2rem;
+}
   
 .col-flex-util {
     display: flex;

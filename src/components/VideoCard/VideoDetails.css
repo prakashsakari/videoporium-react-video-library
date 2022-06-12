@@ -59,4 +59,12 @@
   .description {
     margin-top: 12px;
   }
+
+.bottom-0 {
+  bottom: 0;
+}
+
+.del-btn {
+  padding: .5rem;
+}
   

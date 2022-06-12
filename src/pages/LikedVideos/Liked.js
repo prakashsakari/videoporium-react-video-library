@@ -21,6 +21,7 @@ export const Liked = () => {
         <SideBar />
         <main className="main-video-container scrollable-element">
           <h2 className="heading-2 page-title title-width">Liked Videos</h2>
+          <div className="d-flex gap wrap">
           {filteredVideos && filteredVideos.length > 0 ? (
             filteredVideos.map((video) => <HorizontalVideoCard video={video} key={video._id}/>)
           ) : likedVideos.length < 1 ?  (
@@ -41,6 +42,7 @@ export const Liked = () => {
               
           </h3>
           </div>)}
+          </div>
         </main>
       </div>
     </Fragment>
