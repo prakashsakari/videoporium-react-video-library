@@ -21,7 +21,7 @@ export const WatchLater = () => {
             <SideBar />
             <main class="main-video-container scrollable-element">
                 <h2 className="heading-2 page-title title-width">Watch Later</h2>
-        
+                <div className="d-flex gap wrap">
                 {filteredVideos && filteredVideos.length > 0 ? (
                     filteredVideos.map((video) => <HorizontalVideoCard video={video} />)
                 ) : watchLater.length < 1 ? (
@@ -43,6 +43,7 @@ export const WatchLater = () => {
                 </h3>
                 </div>)
             }
+            </div>
             </main>
         </div>
         </Fragment>

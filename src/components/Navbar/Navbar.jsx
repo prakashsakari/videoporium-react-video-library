@@ -56,7 +56,7 @@ export const Navbar = ({route}) => {
       
       
       <nav class="navigation">
-        <ul class="list-non-bullet d-flex align-center gap">
+        <ul class="list-non-bullet d-flex align-center">
         {eToken && euser.length > 0 ? (
             <li className="list-item-inline">{`Hi, ${euser}`}</li>
           ) : ""}

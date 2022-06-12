@@ -37,6 +37,7 @@ export const History = () => {
               Clear All <span class="material-icons-outlined">clear_all</span>{" "}
             </button>
           </div>
+          <div className="d-flex gap wrap">
           {filteredVideos.length > 0 ? (
             filteredVideos?.map((video) => <HorizontalVideoCard video={video} />)
           ) : history.length < 1 ? (
@@ -58,6 +59,7 @@ export const History = () => {
           </h3>
           </div>)
         }
+        </div>
         </main>
       </div>
     </Fragment>

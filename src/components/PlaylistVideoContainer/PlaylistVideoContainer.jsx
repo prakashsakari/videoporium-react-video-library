@@ -40,7 +40,7 @@ export const PlaylistVideoContainer = () => {
                     Delete Playlist <span class="material-icons-outlined">clear_all</span>{" "}
                 </button>
                 </div>
-                
+                <div className="d-flex gap wrap">
                 {
                     filteredVideos && filteredVideos.length > 0 ? (
                         
@@ -63,6 +63,7 @@ export const PlaylistVideoContainer = () => {
                     </h3>
                     </div>)
                 }
+                </div>
                 </main>
             </div>
         </Fragment>

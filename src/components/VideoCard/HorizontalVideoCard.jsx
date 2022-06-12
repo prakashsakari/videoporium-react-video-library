@@ -42,7 +42,7 @@ export const HorizontalVideoCard = ({ video, playlistId }) => {
     }
   
     return (
-      <div className="single-video-container relative">
+      <div className="horizontaol-video-card relative">
         {alert.open && <Alert />}
         <div className="d-flex gap-12px" onClick={() => navigate(`/video/${_id}`)}>
         <div class="thumbnail-container liked" >
@@ -63,7 +63,7 @@ export const HorizontalVideoCard = ({ video, playlistId }) => {
           </div>
         </div>
         </div>
-        <button className="button absolute top-0 right-0 del-btn" >
+        <button className="button absolute bottom-0 right-0 del-btn" >
           <span class="material-icons cursor" 
                 onClick={handleDeleteClick}
           >delete_outline</span>
